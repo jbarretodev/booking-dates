@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Session;
 
 function dsAsset($path, $source = null)
 {
-    return asset($path . '?v=1.0.1', $source);
+    return env('APP_ENV') == 'production' ?
+        secure_asset($path . '?v=1.0.1', $source) :
+        asset($path . '?v=1.0.1', $source);
 }
 
 function translate($key, $langId = null)
