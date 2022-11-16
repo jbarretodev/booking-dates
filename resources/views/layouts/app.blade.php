@@ -93,7 +93,7 @@
                             @csrf
                             <select id="cmbLang" class="me-3" name="lang_id">
                                 @foreach ($language as $lang)
-                                <option {{(Session::get('lang')!=null) && (Session::get('lang')['id'])==$lang->id?"selected":""}} value={{$lang->id}}>{!! $lang->name !!}</option>
+                                <option {{(Session::get('lang')!=null) && (Session::get('lang')['id'])==$lang->id?"selected":""}} value={{$lang->id}}>{!! html_entity_decode($lang->name) !!}</option>
                                 @endforeach
                             </select>
                         </form>
