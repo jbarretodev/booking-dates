@@ -64,7 +64,7 @@
 								<?php echo csrf_field(); ?>
 								<select id="cmbLang" class="me-3" name="lang_id">
 									<?php $__currentLoopData = $language; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-									<option <?php echo e((Session::get('lang')!=null) && (Session::get('lang')['id'])==$lang->id?"selected":""); ?> value=<?php echo e($lang->id); ?>><?php echo e($lang->name); ?></option>
+									<option <?php echo e((Session::get('lang')!=null) && (Session::get('lang')['id'])==$lang->id?"selected":""); ?> value=<?php echo e($lang->id); ?>><?php echo e(html_entity_decode($lang->name)); ?></option>
 									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								</select>
 							</form>
