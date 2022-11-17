@@ -116,7 +116,7 @@
 						<img class="img-fluid" src="<?php echo e($value->image); ?>" alt="">
 					</div>
 					<a href="<?php echo e(route('site.appoinment.booking')); ?>">
-						<h4><?php echo e($value->title); ?></h4>
+						<h4><?php echo e(html_entity_decode($value->title)); ?></h4>
 					</a>
 					<p>
 						<?php echo e($value->remarks); ?>
@@ -151,9 +151,9 @@
 						<img class="img-fluid" src="<?php echo e($value->image_url); ?>" alt="Employee Image">
 					</div>
 					<div class="details">
-						<h4 class="title"><?php echo e($value->full_name); ?></h4>
+						<h4 class="title"><?php echo e(html_entity_decode($value->full_name)); ?></h4>
 						<p>
-							<?php echo e($value->specialist); ?>
+							<?php echo e(html_entity_decode($value->specialist)); ?>
 
 						</p>
 						<a href="<?php echo e(route('site.appoinment.booking')); ?>" class="btn btn-booking-white"><?php echo e(translate('Book Now')); ?></a>
@@ -187,7 +187,7 @@
 					</div>
 					<div class="desctiotion">
 						<p>
-							<?php echo e($value->description); ?>
+							<?php echo e(html_entity_decode($value->description)); ?>
 
 						</p>
 						<h4><?php echo e($value->name); ?></h4>

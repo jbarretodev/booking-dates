@@ -24,16 +24,17 @@ function translate($key, $langId = null)
             $langId = Session::get('lang')['id'];
         }
         else{
-            $engLangId = CmnLanguage::where('rtl',true)->Orwhere('code', 'en')->select('id')->first()->id;
+            $engLangId = CmnLanguage::where('code', 'es')->select('id')->first()->id;
             $langId = $engLangId;
         }
     }
+
     if ($langTranslate != array()) {
 
         if (!isset($langTranslate[$key . '_' . $langId])) {
             //if translate key & value not found in cache
             $trans = CmnTranslation::where('cmn_language_id', $langId)->where('lang_key', $key)->select('lang_value')->first();
-            $engLangId = CmnLanguage::where('code', 'en')->select('id')->first()->id;
+            $engLangId = CmnLanguage::where('code', 'es')->select('id')->first()->id;
             if ($trans == null && $langId == $engLangId) {
                 //insert default lang value if not found default lang
                 CmnTranslation::create([
@@ -55,9 +56,10 @@ function translate($key, $langId = null)
             //return translated value
             return html_entity_decode($langTranslate[$key . '_' . $langId]);
         }
-    } else {
+    }
+    else {
         $trans = CmnTranslation::where('cmn_language_id', $langId)->where('lang_key', $key)->select('lang_value')->first();
-        $engLangId = CmnLanguage::where('code', 'en')->select('id')->first()->id;
+        $engLangId = CmnLanguage::where('code', 'es')->select('id')->first()->id;
         if ($trans == null && $langId == $engLangId) {
             //insert default lang value if not found default lang
             CmnTranslation::create([
