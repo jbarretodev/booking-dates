@@ -115,7 +115,7 @@
 						<img class="img-fluid" src="{{$value->image}}" alt="">
 					</div>
 					<a href="{{route('site.appoinment.booking')}}">
-						<h4>{{$value->title}}</h4>
+						<h4>{{ html_entity_decode($value->title) }}</h4>
 					</a>
 					<p>
 						{{$value->remarks}}
@@ -149,9 +149,9 @@
 						<img class="img-fluid" src="{{$value->image_url}}" alt="Employee Image">
 					</div>
 					<div class="details">
-						<h4 class="title">{{$value->full_name}}</h4>
+						<h4 class="title">{{ html_entity_decode($value->full_name) }}</h4>
 						<p>
-							{{$value->specialist}}
+							{{ html_entity_decode($value->specialist) }}
 						</p>
 						<a href="{{route('site.appoinment.booking')}}" class="btn btn-booking-white">{{translate('Book Now')}}</a>
 					</div>
@@ -184,7 +184,7 @@
 					</div>
 					<div class="desctiotion">
 						<p>
-							{{$value->description}}
+							{{ html_entity_decode($value->description) }}
 						</p>
 						<h4>{{$value->name}}</h4>
 						<div class="star">
