@@ -24,7 +24,7 @@ function translate($key, $langId = null)
             $langId = Session::get('lang')['id'];
         }
         else{
-            $engLangId = CmnLanguage::where('code', 'en')->select('id')->first()->id;
+            $engLangId = CmnLanguage::where('rtl',true)->Orwhere('code', 'en')->select('id')->first()->id;
             $langId = $engLangId;
         }
     }
