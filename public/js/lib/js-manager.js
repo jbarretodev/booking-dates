@@ -44,7 +44,6 @@ var JsManager = {
     },
 
     SendJsonAsyncON: function (type, serviceUrl, jsonParams, successCalback, errorCallback) {
-
         $.ajax({
             cache: false,
             async: false,

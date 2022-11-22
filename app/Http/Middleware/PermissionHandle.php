@@ -23,6 +23,7 @@ class PermissionHandle
     {
         $userId=Auth::id();
         $userRoleId=DB::table('sec_user_roles')->where('sec_user_id',$userId)->select('sec_role_id')->first();
+
         if($userRoleId!=null){
             if(!$request->ajax()){                
                 //page load request

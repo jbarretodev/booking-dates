@@ -111,6 +111,10 @@ Route::group(['middleware' => 'xssProtection'], function () {
 
         //no check permission
         Route::group(['middleware' => 'verifyUserType'], function () {
+            Route::post('save-file',[\App\Http\Controllers\FilesController::class,'saveNewFile']);
+            Route::get('get-files/{id}',[\App\Http\Controllers\FilesController::class,'getFilesByCustomer']);
+            Route::post('save-record-past',[\App\Http\Controllers\RecordPastController::class,'saveNewRecordPast'])->name('new-record-past');
+            Route::get('get-record-past/{id}',[\App\Http\Controllers\RecordPastController::class,'getRecordPastByCustomer'])->name('get-record-past');
             Route::get('error-display', [App\Http\Controllers\HomeController::class, 'errorDisplay'])->name('error.display');
             Route::get('/home', [App\Http\Controllers\Dashboard\DashboardController::class, 'home'])->name('home');
             Route::get('get-user-info', [App\Http\Controllers\UserManagement\UserController::class, 'getUserInfo'])->name('get.user.info');
@@ -297,7 +301,7 @@ Route::group(['middleware' => 'xssProtection'], function () {
 
             //Customer
             Route::get('customer', [\App\Http\Controllers\Customer\CustomerController::class, 'customer'])->name('customer');
-
+            Route::get('customer-history/{id}',[\App\Http\Controllers\Customer\CustomerController::class,'customerHistory'])->name('customer.history');
             Route::post('customer-create', [\App\Http\Controllers\Customer\CustomerController::class, 'customerStore'])->name('customer.store');
             Route::post('customer-update', [\App\Http\Controllers\Customer\CustomerController::class, 'customerUpdate'])->name('customer.update');
             Route::post('customer-delete', [\App\Http\Controllers\Customer\CustomerController::class, 'customerDelete'])->name('customer.delete');

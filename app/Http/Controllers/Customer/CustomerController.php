@@ -26,6 +26,16 @@ class CustomerController extends Controller
         return view('customer.customer');
     }
 
+    public function customerHistory(Request $request,$id){
+        $customer = CmnCustomer::where('id',$id)->first();
+        $user = User::where('id',$customer->user_id ?? null)->first();
+
+        return view('customer.history-customer',[
+            'user' => $user,
+            'customer' => $customer
+        ]);
+    }
+
     public function customerStore(Request $data)
     {
         try {

@@ -23,7 +23,11 @@ class ServiceBookingInfoController extends Controller
     {
         try {
             $booking = new BookingRepository();
-            $data =  $booking->getBookingInfo($request->dateFrom, $request->dateTo, $request->bookingId, $request->employeeId, $request->customerId, $request->serviceStatus);
+            if($request->has('onlyCustomer') && boolval($request->input('onlyCustomer'))){
+                $data =  $booking->getBookingInfoCus( $request->customerId);
+            }else{
+                $data =  $booking->getBookingInfo($request->dateFrom, $request->dateTo, $request->bookingId, $request->employeeId, $request->customerId, $request->serviceStatus);
+            }
             return $this->apiResponse(['status' => '1', 'data' => $data], 200);
         } catch (Exception $ex) {
             return $this->apiResponse(['status' => '403', 'data' => $ex], 400);

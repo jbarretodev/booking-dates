@@ -87,6 +87,12 @@
         Manager.Delete(rowData.id);
     });
 
+    $(document).on('click','.dTableDataHis',function(){
+        var rowData = dTable.row($(this).parent()).data();
+        console.log(rowData);
+        location.href = "/customer-history/" + rowData.id;
+    })
+
 
     var Manager = {
 
@@ -263,9 +269,9 @@
                         {
                             name: 'Option',
                             title: 'Option',
-                            width: 60,
+                            width: 100,
                             render: function (data, type, row) {
-                                return EventManager.DataTableCommonButton();
+                                return EventManager.DataTableCommonCustomerButton();
                             }
                         },
                         {

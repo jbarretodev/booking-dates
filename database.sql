@@ -212,6 +212,9 @@ CREATE TABLE `cmn_languages` (
 INSERT INTO `cmn_languages` (`id`, `name`, `code`, `rtl`, `created_at`, `updated_at`) VALUES
 (1, 'English', 'en', 0, NULL, NULL);
 
+INSERT INTO `cmn_languages` (`id`, `name`, `code`, `rtl`, `created_at`, `updated_at`) VALUES
+    (2, 'Español', 'es', 1, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --

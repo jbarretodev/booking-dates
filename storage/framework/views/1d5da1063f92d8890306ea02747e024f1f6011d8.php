@@ -59,7 +59,6 @@
 						<a href="<?php echo e($appearance->instagram_link); ?>"><i class="fab fa-instagram fs-13"></i></a>
 					</div>
 					<div class="col-md-6">
-
 						<div class="text-lg-end mt-2 mt-lg-0 float-end header-top-right">
 							<form id="language-change-form" class="float-start" action="<?php echo e(route('change.language')); ?>" method="POST">
 								<?php echo csrf_field(); ?>

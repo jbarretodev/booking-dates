@@ -340,6 +340,39 @@ class BookingRepository
     }
 
     /**
+     * get service booking info
+     */
+    public function getBookingInfoCus($customerId)
+    {
+        $br = new Controller();
+        $services =  SchServiceBooking::UserWiseServiceBooking()
+            ->join('sch_services', 'sch_service_bookings.sch_service_id', '=', 'sch_services.id')
+            ->join('cmn_customers', 'sch_service_bookings.cmn_customer_id', '=', 'cmn_customers.id')
+            ->join('cmn_branches', 'sch_service_bookings.cmn_branch_id', '=', 'cmn_branches.id')
+            ->join('sch_employees', 'sch_service_bookings.sch_employee_id', '=', 'sch_employees.id')
+            ->whereIn('sch_service_bookings.cmn_branch_id', $br->getUserBranch()->pluck('cmn_branch_id'));
+
+
+        $services = $services->where('sch_service_bookings.cmn_customer_id', $customerId);
+
+        $services = $services->selectRaw(
+            'sch_service_bookings.id,
+            sch_service_bookings.status,
+            cmn_customers.full_name as customer,
+            cmn_customers.phone_no as customer_phone_no,
+            sch_employees.full_name as employee,
+            cmn_branches.name as branch,
+            sch_services.title as service,
+            sch_service_bookings.date,
+            sch_service_bookings.start_time,
+            sch_service_bookings.end_time,
+            sch_service_bookings.remarks,
+            sch_service_bookings.service_amount-sch_service_bookings.paid_amount as due'
+        )->orderByRaw('sch_service_bookings.date desc, start_time desc')->get();
+        return $services;
+    }
+
+    /**
      * get employee service by service,branch,employee status like public,private,disable 
      * employeeStatus will be array like [1] or [1,2]  
      */
