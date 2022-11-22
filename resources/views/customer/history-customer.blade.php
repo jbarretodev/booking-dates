@@ -166,7 +166,6 @@
 
           function onSuccess(jsonData) {
             Manager.LoadDataTable(jsonData.data, refresh);
-            $("#record_past").val("");
             JsManager.EndProcessBar();
           }
 
@@ -307,6 +306,7 @@
 
           function onSuccess(jsonData) {
             alert("Antecedente Registrado");
+            $("#record_past").val("");
             JsManager.EndProcessBar();
           }
 
