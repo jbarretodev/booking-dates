@@ -9,7 +9,7 @@
                 <h2 class="text-white pb-2 fw-bold">{{translate('Appointment Booking Dashboard')}}</h2>
             </div>
             <div class="ml-md-auto py-2 py-md-0">
-                <a href="booking-calendar" class="btn btn-secondary btn-round">{{translate('Add New Booking')}}</a>
+                <a href="booking-calendar" class="btn btn-secondary btn-round">{!! translate('Add New Booking') !!}</a>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
         <div class="col-md-3">
             <div class="card full-height">
                 <div class="card-body">
-                    <div class="fs-11rem">{{translate('Total Done')}}</div>
+                    <div class="fs-11rem">{!! translate('Total Done') !!}</div>
                     <div class="d-flex flex-wrap justify-content-around pb-2 pt-2">
                         <div class="px-2 pb-2 pb-md-0 text-center">
                             <h1 class="fw-bold mb-0 mt-2" id="divDoneBookingText">0</h1>
@@ -37,7 +37,7 @@
         <div class="col-md-3">
             <div class="card full-height">
                 <div class="card-body">
-                    <div class="fs-11rem">{{translate('Total Cancel')}}</div>
+                    <div class="fs-11rem">{!! translate('Total Cancel') !!}</div>
                     <div class="d-flex flex-wrap justify-content-around pb-2 pt-2">
                         <div class="px-2 pb-2 pb-md-0 text-center">
                             <h1 class="fw-bold mb-0 mt-2" id="divCancelBookingText">0</h1>
@@ -53,7 +53,7 @@
         <div class="col-md-3">
             <div class="card full-height">
                 <div class="card-body">
-                    <div class="fs-11rem">{{translate('Total Approved')}}</div>
+                    <div class="fs-11rem">{!! translate('Total Approved') !!}</div>
                     <div class="d-flex flex-wrap justify-content-around pb-2 pt-2">
                         <div class="px-2 pb-2 pb-md-0 text-center">
                             <h1 class="fw-bold mb-0 mt-2" id="divApprovedBookingText">0</h1>
@@ -69,7 +69,7 @@
         <div class="col-md-3">
             <div class="card full-height">
                 <div class="card-body">
-                    <div class="fs-11rem">{{translate('Processing & Pending')}}</div>
+                    <div class="fs-11rem">{!! translate('Processing & Pending') !!}</div>
                     <div class="d-flex flex-wrap justify-content-around pb-2 pt-2">
                         <div class="px-2 pb-2 pb-md-0 text-center">
                             <h1 class="fw-bold mb-0 mt-2" id="divProcessingAndPendingBookingText">0</h1>
@@ -88,32 +88,32 @@
         <div class="col-md-7">
             <div class="card full-height">
                 <div class="card-body">
-                    <div class="card-title">{{translate("Today's Service statistics")}}</div>
-                    <div class="card-category">{{translate('Show all service statistics based on user branch permission.')}}</div>
+                    <div class="card-title">{!! translate("Today's Service statistics") !!}</div>
+                    <div class="card-category">{!! translate('Show all service statistics based on user branch permission.') !!}</div>
                     <div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
                         <div class="px-2 pb-2 pb-md-0 text-center">
                             <div id="divTotalBookingToday"></div>
-                            <h6 class="fw-bold mt-3 mb-0">{{translate('Total')}}</h6>
+                            <h6 class="fw-bold mt-3 mb-0">{!! translate('Total') !!}</h6>
                         </div>
                         <div class="px-2 pb-2 pb-md-0 text-center">
                             <div id="divDoneBookingToday"></div>
-                            <h6 class="fw-bold mt-3 mb-0">{{translate('Done')}}</h6>
+                            <h6 class="fw-bold mt-3 mb-0">{!! translate('Done') !!}</h6>
                         </div>
                         <div class="px-2 pb-2 pb-md-0 text-center">
                             <div id="divCancelBookingToday"></div>
-                            <h6 class="fw-bold mt-3 mb-0">{{translate('Cancel')}}</h6>
+                            <h6 class="fw-bold mt-3 mb-0">{!! translate('Cancel') !!}</h6>
                         </div>
                         <div class="px-2 pb-2 pb-md-0 text-center">
                             <div id="divApprovedBookingToday"></div>
-                            <h6 class="fw-bold mt-3 mb-0">{{translate('Approved')}}</h6>
+                            <h6 class="fw-bold mt-3 mb-0">{!! translate('Approved') !!}</h6>
                         </div>
                         <div class="px-2 pb-2 pb-md-0 text-center">
                             <div id="divProcessingBookingToday"></div>
-                            <h6 class="fw-bold mt-3 mb-0">{{translate('Processing')}}</h6>
+                            <h6 class="fw-bold mt-3 mb-0">{!! translate('Processing') !!}</h6>
                         </div>
                         <div class="px-2 pb-2 pb-md-0 text-center">
                             <div id="divPendingBookingToday"></div>
-                            <h6 class="fw-bold mt-3 mb-0">{{translate('Pending')}} </h6>
+                            <h6 class="fw-bold mt-3 mb-0">{!! translate('Pending') !!} </h6>
                         </div>
                     </div>
                 </div>
@@ -123,25 +123,25 @@
         <div class="col-md-5">
             <div class="card full-height">
                 <div class="card-body">
-                    <div class="card-title">{{translate("Today's Income & Other Statistics")}}</div>
+                    <div class="card-title">{!! translate("Today's Income & Other Statistics") !!}</div>
                     <div class="row py-3">
                         <div class="col-md-6 d-flex flex-column justify-content-around">
                             <div>
-                                <h6 class="fw-bold text-uppercase text-success op-8">{{translate('Total Income')}}</h6>
+                                <h6 class="fw-bold text-uppercase text-success op-8">{!! translate('Total Income') !!}</h6>
                                 <h3 id="totalIncome" class="fw-bold">0</h3>
                             </div>
                             <div>
-                                <h6 class="fw-bold text-uppercase text-danger op-8">{{translate('Total Due')}}</h6>
+                                <h6 class="fw-bold text-uppercase text-danger op-8">{!! translate('Total Due') !!}</h6>
                                 <h3 id="totalDue" class="fw-bold">0</h3>
                             </div>
                         </div>
                         <div class="col-md-6 d-flex flex-column justify-content-around">
                             <div>
-                                <h6 class="fw-bold text-uppercase text-success op-8">{{translate('Total Cash Payment')}}</h6>
+                                <h6 class="fw-bold text-uppercase text-success op-8">{!! translate('Total Cash Payment') !!}</h6>
                                 <h3 id="totalCash" class="fw-bold">0</h3>
                             </div>
                             <div>
-                                <h6 class="fw-bold text-uppercase text-primary op-8">{{translate('Total Online Payment')}}</h6>
+                                <h6 class="fw-bold text-uppercase text-primary op-8">{!! translate('Total Online Payment') !!}</h6>
                                 <h3 id="totalOnlinePayment" class="fw-bold">0</h3>
                             </div>
                         </div>
@@ -157,7 +157,7 @@
             <div class="card full-height">
                 <div class="card-header">
                     <div class="card-head-row">
-                        <div class="card-title">{{translate('Booking Info')}}</div>
+                        <div class="card-title">{!! translate('Booking Info') !!}</div>
 
                         <div class="card-tools">
 
@@ -193,7 +193,7 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">{{translate('Top Booking Service')}}</div>
+                    <div class="card-title">{!! translate('Top Booking Service') !!}</div>
                 </div>
                 <div class="card-body pb-0" id="div-body-top-booking-service">
 
