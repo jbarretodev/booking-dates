@@ -137,8 +137,8 @@
 		<div class="row d-flex justify-content-center">
 			<div class="col-lg-9">
 				<div class="text-center pb-3">
-					<h2 class="mb-10"><?php echo e(translate('Recently Joined New Team Members Us')); ?></h2>
-					<p><?php echo e(translate('We are offering, you can take service from our new team member, hope they will provide to you best services.')); ?></p>
+					<h2 class="mb-10"><?php echo translate('Recently Joined New Team Members Us'); ?></h2>
+					<p><?php echo translate('We are offering, you can take service from our new team member, hope they will provide to you best services.'); ?></p>
 				</div>
 			</div>
 		</div>

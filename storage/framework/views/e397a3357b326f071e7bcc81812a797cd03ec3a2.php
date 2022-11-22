@@ -53,7 +53,7 @@
         <div class="logo-header" data-background-color="blue">
 
             <a href="<?php echo e(route('home')); ?>" class="logo">
-                <img height="30" width="145" src="<?php echo e(url($appearance->logo)); ?>" alt="navbar brand" class="navbar-brand br-5 bg-white" />
+                <img height="30" width="145" src="<?php echo e(url($appearance->logo)); ?>" alt="navbar brand" class="navbar-brand br-5" />
             </a>
             <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
