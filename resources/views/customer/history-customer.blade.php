@@ -161,7 +161,7 @@
             customerId: $("#customerId").val(),
             onlyCustomer: true,
           };
-          var serviceUrl = "get-service-booking-info?customerId=" + $("#customerId").val();
+          var serviceUrl = "get-service-booking-info";
           JsManager.SendJsonAsyncON('GET', serviceUrl, jsonParam, onSuccess, onFailed);
 
           function onSuccess(jsonData) {
