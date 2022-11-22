@@ -315,6 +315,39 @@
             Message.Exception(xhr);
           }
         },
+        ServiceStatus: function (status) {
+          var serviceStatus = ['Pending', 'Processing', 'Approved', 'Cancel', 'Done'];
+          return serviceStatus[status];
+        },
+        ServiceFontColorClass: function (status) {
+          var serviceColor = ['fc_pending', 'fc_processing', 'fc_approved', 'fc_cancel', 'fc_done'];
+          return serviceColor[status];
+        },
+        ChangeServiceStatus: function (form) {
+          if (Message.Prompt()) {
+            JsManager.StartProcessBar();
+            var jsonParam = form.serialize();
+            var serviceUrl = "change-service-booking-status";
+            JsManager.SendJson("POST", serviceUrl, jsonParam, onSuccess, onFailed);
+
+            function onSuccess(jsonData) {
+              if (jsonData.status == "1") {
+                Message.Success("Successfully update service status to " + Manager.ServiceStatus($("#status").val()));
+                Manager.ResetForm();
+                $("#frmModal").modal('hide');
+                Manager.GetDataList(1); //reload datatable
+              } else {
+                Message.Error("Failed to update service status for " + Manager.ServiceStatus($("#status").val()));
+              }
+              JsManager.EndProcessBar();
+            }
+            function onFailed(xhr, status, err) {
+              JsManager.EndProcessBar();
+              Manager.ResetForm();
+              Message.Exception(xhr);
+            }
+          }
+        },
       };
 
       function getBooking(){
