@@ -135,8 +135,8 @@
 		<div class="row d-flex justify-content-center">
 			<div class="col-lg-9">
 				<div class="text-center pb-3">
-					<h2 class="mb-10">{{translate('Recently Joined New Team Members Us')}}</h2>
-					<p>{{translate('We are offering, you can take service from our new team member, hope they will provide to you best services.')}}</p>
+					<h2 class="mb-10">{!! translate('Recently Joined New Team Members Us') !!}</h2>
+					<p>{!! translate('We are offering, you can take service from our new team member, hope they will provide to you best services.') !!}</p>
 				</div>
 			</div>
 		</div>
