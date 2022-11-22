@@ -83,7 +83,7 @@
                                     <i class="fa fa-search search-icon"></i>
                                 </button>
                             </div>
-                            <input type="text" placeholder="{{translate('Search')}} ..." class="form-control" />
+                            <input type="text" placeholder="{!! translate('Search') !!} ..." class="form-control" />
                         </div>
                     </form>
                 </div>
