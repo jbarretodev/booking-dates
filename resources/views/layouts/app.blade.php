@@ -41,8 +41,6 @@
     <!-- bootstrap select -->
     <link href="{{dsAsset('js/lib/bootstrap-select-1.13.14/css/bootstrap-select.min.css')}}" rel="stylesheet" />
 
-    <!--Jquery JS-->
-    <script src="{{ dsAsset('js/lib/assets/js/core/jquery-3.6.0.min.js') }}"></script>
     <link href="https://fonts.googleapis.com/css?family=Exo:500,600,700|Roboto&display=swap" rel="stylesheet" />
 </head>
 
@@ -312,7 +310,8 @@
 
 </div>
 
-
+<!--Jquery JS-->
+<script src="{{ dsAsset('js/lib/assets/js/core/jquery-3.6.0.min.js') }}"></script>
 <!--   Core JS Files   -->
 <script src="{{ dsAsset('js/lib/assets/js/core/popper.min.js') }}"></script>
 <script src="{{ dsAsset('js/lib/assets/js/core/bootstrap.min.js') }}"></script>
