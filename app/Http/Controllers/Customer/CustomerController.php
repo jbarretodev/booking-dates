@@ -28,11 +28,13 @@ class CustomerController extends Controller
 
     public function customerHistory(Request $request,$id){
         $customer = CmnCustomer::where('id',$id)->first();
+        $customers = CmnCustomer::get(['full_name','id']);
         $user = User::where('id',$customer->user_id ?? null)->first();
 
         return view('customer.history-customer',[
             'user' => $user,
-            'customer' => $customer
+            'customer' => $customer,
+            'customers' => $customers,
         ]);
     }
 

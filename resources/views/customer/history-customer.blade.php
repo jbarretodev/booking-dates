@@ -1,5 +1,125 @@
 @extends('layouts.app')
 @section('content')
+    <!--Modal add menu-->
+    <div class="modal fade" id="frmModalCustoH" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form class="form-horizontal" id="inputFormH" novalidate="novalidate" enctype="multipart/form-data">
+
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            <span class="fw-mediumbold">
+                                {{translate('Customer Info')}}
+                            </span>
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="form-group control-group form-inline controls">
+                                    <label>{{translate('Customer Name')}} *</label>
+                                    <input type="text" value="{{ $customer->full_name ?? 'N/A' }}" id="full_name" name="full_name" placeholder="{{translate('Full name')}}" required data-validation-required-message="Customer name is required" class="form-control input-full" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group control-group form-inline controls">
+                                    <label>{{translate('System User')}}</label>
+                                    <select name="user_id" id="user_id" class="form-control input-full">
+                                        @foreach($customers as $custo)
+                                            <option value="{{$custo->id}}">{{$custo->full_name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group control-group form-inline controls">
+                            <label>Customer Email *</label>
+                            <input type="email" id="email" value="{{ $customer->email }}" name="email" placeholder="email@example.com" required data-validation-required-message="Email address is required" class="form-control input-full" />
+                            <span class="help-block"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="form-group control-group form-inline controls">
+
+                                    <label class="col-md-12 p-0">{{translate('Customer Phone')}} *</label>
+                                    <input type="tel" value="{{ $customer->phone_no }}" id="phone_no" maxlength="20" name="phone_no" placeholder="{{translate('Phone Number')}}" required data-validation-required-message="Phone number is required" class="form-control input-full w-100" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group control-group form-inline controls">
+                                    <label>{{translate('Date of Birth')}} </label>
+                                    <input type="text" value="{{ $customer->dob }}" id="dob" name="dob" class="form-control input-full datePicker" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group control-group form-inline ">
+                            <label>{{translate('Street Address')}} *</label>
+                            <textarea type="text" id="street_address" name="street_address" required data-validation-required-message="Street address is required" class="form-control input-full"></textarea>
+                            <span class="help-block">{{ $customer->street_address }}</span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group control-group form-inline controls">
+                                    <label>{{translate('Country')}}</label>
+                                    <input type="text" id="country" value="{{ $customer->country }}" name="country" class="form-control input-full" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group control-group form-inline controls">
+                                    <label>{{translate('City')}}</label>
+                                    <input type="text" value="{{ $customer->city }}" id="city" name="city" class="form-control input-full" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group control-group form-inline controls">
+                                    <label>{{translate('State Name')}}</label>
+                                    <input type="text" value="{{ $customer->state }}" id="state" name="state" class="form-control input-full" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group control-group form-inline controls">
+                                    <label>{{translate('Postal Code')}}</label>
+                                    <input type="number" value="{{ $customer->postal_code }}" id="postal_code" name="postal_code" class="form-control input-full" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group control-group form-inline controls">
+                            <label>{{translate('Remarks')}}</label>
+                            <input type="text" value="{{ $customer->remarks }}" id="remarks" name="remarks" class="form-control input-full" />
+                            <span class="help-block"></span>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">{{translate('Close')}}</button>
+                        <button type="submit" class="btn btn-success btn-sm">{{translate('Save Change')}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- category datatable -->
     <div class="row">
         <div class="col-md-12">
@@ -9,122 +129,229 @@
                         <h4 class="card-title">
                             Ficha historial del cliente
                         </h4>
+                        <div class="ml-xl-5">
+                            <button type="button" class="btn btn-light editCustoH">Datos del Paciente</button>
+                            <button id="history_pa" type="button" class="btn btn-light">Historial de Citas</button>
+                            <button id="record_pa" type="button" class="btn btn-light">Antecedentes del Paciente</button>
+                            <button id="files_pa" type="button" class="btn btn-light">Archivos del Paciente</button>
+                        </div>
                     </div>
                 </div>
+
                 <input type="hidden" id="customerId" value="{{ $customer->id }}">
+
                 <div class="card-body">
-                    <form>
-                        <div class="row">
-                            <div class="col form-group">
-                                <label>{{translate('Customer Name')}}</label>
-                                <input type="text" id="complete-name" class="form-control" value="{{ $customer->full_name ?? 'N/A' }}" disabled placeholder="Nombre Completo">
+                    <div id="data_patient">
+                        <form>
+                            <div class="row">
+                                <div class="col form-group">
+                                    <label>{{translate('Customer Name')}}</label>
+                                    <input type="text" id="complete-name" class="form-control" value="{{ $customer->full_name ?? 'N/A' }}" disabled placeholder="Nombre Completo">
+                                </div>
+                                <div class="col form-group">
+                                    <label>Customer Email</label>
+                                    <input type="text" class="form-control" value="{{ $user->email ?? 'N/A' }}" disabled placeholder="Email">
+                                </div>
                             </div>
-                            <div class="col form-group">
-                                <label>Customer Email</label>
-                                <input type="text" class="form-control" value="{{ $user->email ?? 'N/A' }}" disabled placeholder="Email">
+                            <div class="row mt-1">
+                                <div class="col form-group">
+                                    <label>{{translate('Date of Birth')}} </label>
+                                    <input type="text" class="form-control" value="{{ $customer->dob }}" disabled placeholder="Fecha de Nacimiento">
+                                </div>
+                                <div class="col form-group">
+                                    <label class="col-md-12 p-0">{{translate('Customer Phone')}}</label>
+                                    <input type="text" class="form-control" value="{{ $customer->phone_no }}" disabled placeholder="Telefono">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mt-1">
-                            <div class="col form-group">
-                                <label>{{translate('Date of Birth')}} </label>
-                                <input type="text" class="form-control" value="{{ $customer->dob }}" disabled placeholder="Fecha de Nacimiento">
+                            <div class="row mt-1">
+                                <div class="col form-group">
+                                    <label>{{translate('Country')}}</label>
+                                    <input type="text" class="form-control" value="{{ $customer->country }}" disabled placeholder="Pais">
+                                </div>
+                                <div class="col form-group">
+                                    <label>{{translate('City')}}</label>
+                                    <input type="text" class="form-control" value="{{ $customer->city }}" disabled placeholder="Ciudad">
+                                </div>
                             </div>
-                            <div class="col form-group">
-                                <label class="col-md-12 p-0">{{translate('Customer Phone')}}</label>
-                                <input type="text" class="form-control" value="{{ $customer->phone_no }}" disabled placeholder="Telefono">
-                            </div>
-                        </div>
-                        <div class="row mt-1">
-                            <div class="col form-group">
-                                <label>{{translate('Country')}}</label>
-                                <input type="text" class="form-control" value="{{ $customer->country }}" disabled placeholder="Pais">
-                            </div>
-                            <div class="col form-group">
-                                <label>{{translate('City')}}</label>
-                                <input type="text" class="form-control" value="{{ $customer->city }}" disabled placeholder="Ciudad">
-                            </div>
-                        </div>
-                        <div class="row mt-1">
-                            <div class="col form-group">
-                                <label>{{translate('Street Address')}}</label>
-                                <textarea name="address" placeholder="Direccion" class="form-control" id="" cols="20" disabled rows="5">
+                            <div class="row mt-1">
+                                <div class="col form-group">
+                                    <label>{{translate('Street Address')}}</label>
+                                    <textarea name="address" placeholder="Direccion" class="form-control" id="" cols="20" disabled rows="5">
                                     {{ $customer->street_address }}
                                 </textarea>
+                                </div>
+                                <div class="col form-group">
+                                    <label>{{translate('Postal Code')}}</label>
+                                    <input type="text" class="form-control" value="{{ $customer->postal_code }}" disabled placeholder="Codigo Postal">
+                                </div>
                             </div>
-                            <div class="col form-group">
-                                <label>{{translate('Postal Code')}}</label>
-                                <input type="text" class="form-control" value="{{ $customer->postal_code }}" disabled placeholder="Codigo Postal">
+                            <div class="row mt-1">
+                                <div class="col form-group">
+                                    <label>{{translate('State Name')}}</label>
+                                    <input type="text" class="form-control" value="{{ $customer->state }}" disabled placeholder="Estado">
+                                </div>
+                                <div class="col form-group">
+                                    <label>{{translate('Remarks')}}</label>
+                                    <input type="text" class="form-control" value="{{ $customer->remarks }}" disabled placeholder="Observaciones">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mt-1">
-                            <div class="col form-group">
-                                <label>{{translate('State Name')}}</label>
-                                <input type="text" class="form-control" value="{{ $customer->state }}" disabled placeholder="Estado">
+                        </form>
+                        <hr class="mt-2">
+                    </div>
+
+                    <div id="history_patient">
+                        <h4 class="card-title">
+                            Historial de Citas
+                        </h4>
+                        <table id="tableElement" class="mt-3 table table-bordered w100"></table>
+                        <hr class="mt-2">
+                    </div>
+
+                    <div id="record_back">
+                        <h4 class="card-title">
+                            Registro de Antecedentes
+                        </h4>
+                        <form>
+                            <div class="form-group">
+                                <label for="record_past">Antecedentes</label>
+                                <textarea class="form-control" name="record_past" id="record_past" cols="30" rows="5"></textarea>
                             </div>
-                            <div class="col form-group">
-                                <label>{{translate('Remarks')}}</label>
-                                <input type="text" class="form-control" value="{{ $customer->remarks }}" disabled placeholder="Observaciones">
+                            <button type="button" id="send_past" class="btn btn-primary">Enviar</button>
+                        </form>
+
+                        <table class="table table-bordered mt-3">
+                            <thead>
+                            <tr>
+                                <td>Descripción</td>
+                                <td>Acciones</td>
+                            </tr>
+                            </thead>
+                            <tbody id="tbl-record">
+
+                            </tbody>
+                        </table>
+                        <hr class="mt-3">
+                    </div>
+
+                    <div id="files_patient">
+                        <h4 class="card-title">
+                            Subida de Archivos
+                        </h4>
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="file_up">Seleccione un Archivo</label>
+                                <input type="file" class="form-control-file" id="file_up">
+                                <button type="button" id="upload-file" class="mt-2 btn btn-primary">Subir Archivo</button>
                             </div>
+                        </form>
+
+                        <hr class="mt-3">
+
+                        <h4 class="card-title">
+                            Listado de Archivos
+                        </h4>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <td>Nombre del Archivo</td>
+                                <td>Acciones</td>
+                            </tr>
+                            </thead>
+                            <tbody id="tbody_files">
+
+                            </tbody>
+                        </table>
+                        <hr class="mt-3">
+
+                        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                            <ol id="caru_indi" class="carousel-indicators">
+
+                            </ol>
+                            <div id="caru_item" class="carousel-inner">
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </button>
                         </div>
-                    </form>
-                    <hr class="mt-2">
-                    <h4 class="card-title">
-                        Historial de Citas
-                    </h4>
-                    <table id="tableElement" class="mt-3 table table-bordered w100"></table>
-
-                    <hr class="mt-2">
-                    <h4 class="card-title">
-                        Registro de Antecedentes
-                    </h4>
-
-                    <form>
-                        <div class="form-group">
-                            <label for="record_past">Antecedentes</label>
-                            <textarea class="form-control" name="record_past" id="record_past" cols="30" rows="5"></textarea>
-                        </div>
-                        <button type="button" id="send_past" class="btn btn-primary">Enviar</button>
-                    </form>
-
-                    <hr class="mt-3">
-                    <h4 class="card-title">
-                        Subida de Archivos
-                    </h4>
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label for="file_up">Seleccione un Archivo</label>
-                            <input type="file" class="form-control-file" id="file_up">
-                            <button type="button" id="upload-file" class="mt-2 btn btn-primary">Subir Archivo</button>
-                        </div>
-                    </form>
-
-                    <hr class="mt-3">
-                    <h4 class="card-title">
-                        Listado de Archivos
-                    </h4>
-
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <td>Nombre del Archivo</td>
-                            <td>Url</td>
-                        </tr>
-                        </thead>
-                        <tbody id="tbody_files">
-
-                        </tbody>
-                    </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <script>
+
+    <script type="text/javascript">
       var dTable = null;
       var _id = null;
 
       $(function(){
+        initTelephone = window.intlTelInput(document.querySelector("#phone_no"), {
+          allowDropdown: true,
+          autoHideDialCode: false,
+          dropdownContainer: document.body,
+          excludeCountries: [],
+          formatOnDisplay: false,
+          geoIpLookup: function (callback) {
+            var jsonParam = '';
+            var serviceUrl = "get-requested-country-code";
+            JsManager.SendJson('GET', serviceUrl, jsonParam, onSuccess, onFailed);
+
+            function onSuccess(jsonData) {
+              if (jsonData.status == 1) {
+                callback(jsonData.data);
+              } else {
+                callback("US");
+              }
+            }
+            function onFailed(xhr, status, err) {
+            }
+          },
+          initialCountry: "auto",
+          nationalMode: true,
+          placeholderNumberType: "MOBILE",
+          separateDialCode: true,
+          utilsScript: "js/lib/tel-input/js/utils.js",
+        });
         getBooking();
         Manager.LoadAllFiles($('#customerId').val());
+        Manager.LoadAllFilesImages($('#customerId').val());
+        Manager.LoadAllRecordPast($('#customerId').val());
+
+        //save or update
+        JsManager.JqBootstrapValidation('#inputFormH', (form, event) => {
+          event.preventDefault();
+          if ($.trim($("#customerId").val()) == "") {
+            Manager.Save(form);
+          } else {
+            Manager.Update(form, $("#customerId").val());
+          }
+        });
+
+        initTelephone.setNumber('+' + {{$customer->phone_no}});
+
+        //show edit info modal
+        $(document).on('click','.editCustoH', function () {
+          //var rowData = dTable.row($(this).parent()).data();
+          _id = $("#customerId").val();
+          $("#frmModalCustoH").modal('show');
+        });
+
+        $(document).on('click',"button[id^='file-']",function(){
+          Manager.DeleteFiles($(this).attr('id').split('-').pop());
+        });
+
+        $(document).on('click',"button[id^='record-']",function(){
+          Manager.DeleteRecordPast($(this).attr('id').split('-').pop());
+        });
+
+        $("#history_patient").show();
+        $("#record_back").hide();
+        $("#files_patient").hide();
+        $("#data_patient").hide();
         //generate datatabe serial no
         dTableManager.dTableSerialNumber(dTable);
 
@@ -152,9 +379,80 @@
             cmn_customer_id: $('#customerId').val(),
           });
         });
+
+        $("#history_pa").click(function(){
+          $("#history_patient").show();
+          $("#record_back").hide();
+          $("#files_patient").hide();
+        });
+
+        $("#record_pa").click(function(){
+          $("#history_patient").hide();
+          $("#record_back").show();
+          $("#files_patient").hide();
+        });
+
+        $("#files_pa").click(function(){
+          $("#history_patient").hide();
+          $("#record_back").hide();
+          $("#files_patient").show();
+        });
       });
 
       var Manager = {
+        ResetForm: function () {
+          $("#inputForm").trigger('reset');
+        },
+        Update: function (form, id) {
+          if (Message.Prompt()) {
+            JsManager.StartProcessBar();
+            var jsonParam = form.serialize() + "&id=" + id + "&phone_no=" + $("#phone_no").val();
+            var serviceUrl = "customer-update";
+            JsManager.SendJson("POST", serviceUrl, jsonParam, onSuccess, onFailed);
+
+            function onSuccess(jsonData) {
+              if (jsonData.status == "1") {
+                Message.Success("update");
+                _id = null;
+                Manager.ResetForm();
+                //Manager.GetDataList(1); //reload datatable
+              } else {
+                Message.Error("update");
+              }
+              JsManager.EndProcessBar();
+
+            }
+
+            function onFailed(xhr, status, err) {
+              JsManager.EndProcessBar();
+              Message.Exception(xhr);
+            }
+          }
+        },
+        Save: function (form) {
+          if (Message.Prompt()) {
+            JsManager.StartProcessBar();
+            var jsonParam = form.serialize() + "&phone_no=" + $("#phone_no").val();
+            var serviceUrl = "customer-create";
+            JsManager.SendJson("POST", serviceUrl, jsonParam, onSuccess, onFailed);
+
+            function onSuccess(jsonData) {
+              if (jsonData.status == "1") {
+                Message.Success("save");
+                Manager.ResetForm();
+                //Manager.GetDataList(1); //reload datatable
+              } else {
+                Message.Error("save");
+              }
+              JsManager.EndProcessBar();
+            }
+
+            function onFailed(xhr, status, err) {
+              JsManager.EndProcessBar();
+              Message.Exception(xhr);
+            }
+          }
+        },
         GetDataList: function (refresh) {
           JsManager.StartProcessBar();
           var jsonParam = {
@@ -286,10 +584,79 @@
 
             for(var i = 0; i < jsonData.length; i++){
               var html = `<tr>
-                            <td>${jsonData[i]['name']}</td>
-                            <td><a href="${jsonData[i]['path']}">${jsonData[i]['path']}</td>
+                            <td> <a href="${jsonData[i]['path']}">${jsonData[i]['name']}</a></td>
+                            <td>
+                              <button id="file-${jsonData[i]['id']}" class="btn btn-primary"><i class="fas fa-trash-alt"></i></button>
+                            </td>
                          </tr>`;
               $("#tbody_files").append(html);
+            }
+          }
+
+          function onFailed(xhr, status, err) {
+            JsManager.EndProcessBar();
+            Message.Exception(xhr);
+          }
+        },
+        LoadAllFilesImages: function(id){
+          JsManager.StartProcessBar();
+          var serviceUrl = "get-files-image/" + id;
+          JsManager.SendJsonAsyncON('GET', serviceUrl, {}, onSuccess, onFailed);
+
+          function onSuccess(jsonData) {
+            JsManager.EndProcessBar();
+            console.log(jsonData);
+
+            if(jsonData.length < 1) $("#carouselExampleCaptions").hide();
+
+            $("#caru_indi").html("");
+            $("#caru_item").html("");
+
+            for(var i = 0; i < jsonData.length; i++){
+              if(i == 0){
+                $("#caru_indi").append(`<li data-target="#carouselExampleCaptions" data-slide-to="${i}" class="active"></li>`);
+
+                $("#caru_item").append(`<div class="carousel-item active">
+                                    <img src="${jsonData[i]['path']}" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>${jsonData[i]['created_at']}</h5>
+                                    </div>
+                                </div>`);
+              }
+
+              $("#caru_indi").append(`<li data-target="#carouselExampleCaptions" data-slide-to="${i}"></li>`);
+
+              $("#caru_item").append(`<div class="carousel-item">
+                                    <img src="${jsonData[i]['path']}" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>${jsonData[i]['created_at']}</h5>
+                                    </div>
+                                </div>`);
+            }
+          }
+
+          function onFailed(xhr, status, err) {
+            JsManager.EndProcessBar();
+            Message.Exception(xhr);
+          }
+        },
+        LoadAllRecordPast: function(id){
+          JsManager.StartProcessBar();
+          JsManager.SendJsonAsyncON('GET', "get-record-past/" + id, {}, onSuccess, onFailed);
+
+          function onSuccess(jsonData) {
+            JsManager.EndProcessBar();
+
+            $("#tbl-record").html("");
+
+            for(var i = 0; i < jsonData.length; i++){
+              var html = `<tr>
+                            <td>${jsonData[i]['description']}</td>
+                            <td>
+                              <button class="btn btn-primary" id="record-${jsonData[i]['id']}" class=""><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                         </tr>`;
+              $("#tbl-record").append(html);
             }
           }
 
@@ -307,6 +674,7 @@
           function onSuccess(jsonData) {
             alert("Antecedente Registrado");
             $("#record_past").val("");
+            Manager.LoadAllRecordPast($('#customerId').val());
             JsManager.EndProcessBar();
           }
 
@@ -346,6 +714,38 @@
               Manager.ResetForm();
               Message.Exception(xhr);
             }
+          }
+        },
+        DeleteFiles: function(id){
+          JsManager.StartProcessBar();
+
+          var serviceUrl = "delete-file/" + id;
+          JsManager.SendJsonWithFile('GET', serviceUrl, {}, onSuccess, onFailed);
+
+          function onSuccess(jsonData) {
+            JsManager.EndProcessBar();
+            Manager.LoadAllFiles($('#customerId').val());
+          }
+
+          function onFailed(xhr, status, err) {
+            JsManager.EndProcessBar();
+            Message.Exception(xhr);
+          }
+        },
+        DeleteRecordPast: function(id){
+          JsManager.StartProcessBar();
+
+          var serviceUrl = "delete-record-past/" + id;
+          JsManager.SendJsonWithFile('GET', serviceUrl, {}, onSuccess, onFailed);
+
+          function onSuccess(jsonData) {
+            JsManager.EndProcessBar();
+            Manager.LoadAllRecordPast($('#customerId').val());
+          }
+
+          function onFailed(xhr, status, err) {
+            JsManager.EndProcessBar();
+            Message.Exception(xhr);
           }
         },
       };

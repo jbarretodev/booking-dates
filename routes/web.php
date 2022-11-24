@@ -112,9 +112,12 @@ Route::group(['middleware' => 'xssProtection'], function () {
         //no check permission
         Route::group(['middleware' => 'verifyUserType'], function () {
             Route::post('save-file',[\App\Http\Controllers\FilesController::class,'saveNewFile']);
+            Route::get('delete-file/{id}',[\App\Http\Controllers\FilesController::class,'deleteFiles']);
             Route::get('get-files/{id}',[\App\Http\Controllers\FilesController::class,'getFilesByCustomer']);
+            Route::get('get-files-image/{id}',[\App\Http\Controllers\FilesController::class,'getOnlyImages']);
             Route::post('save-record-past',[\App\Http\Controllers\RecordPastController::class,'saveNewRecordPast'])->name('new-record-past');
             Route::get('get-record-past/{id}',[\App\Http\Controllers\RecordPastController::class,'getRecordPastByCustomer'])->name('get-record-past');
+            Route::get('delete-record-past/{id}',[\App\Http\Controllers\RecordPastController::class,'deleteRecordPast'])->name('get-record-past');
             Route::get('error-display', [App\Http\Controllers\HomeController::class, 'errorDisplay'])->name('error.display');
             Route::get('/home', [App\Http\Controllers\Dashboard\DashboardController::class, 'home'])->name('home');
             Route::get('get-user-info', [App\Http\Controllers\UserManagement\UserController::class, 'getUserInfo'])->name('get.user.info');

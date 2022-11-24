@@ -150,7 +150,7 @@ function isValidEmail(email) {
         DataTableCommonCustomerButton: function () {
             return '<button class="btn btn-primary btn-datatable btn-round float-left dTableEdit mr-2" title="Click to edit"><i class="fas fa-edit"></i></button>' +
               '<button class="btn btn-danger btn-datatable btn-round float-left dTableDelete mr-2" title="Click to delete"><i class="far fa-trash-alt"></i></button>' +
-              '<button class="btn btn-danger btn-datatable btn-round float-left dTableDataHis" title="Historial"><i class="fas fa-list"></i></button>';
+              '<button class="btn btn-light btn-datatable btn-round float-left dTableDataHis" title="Historial"><i class="fas fa-list"></i></button>';
         }
 
     };

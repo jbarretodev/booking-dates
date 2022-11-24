@@ -60,7 +60,7 @@
     });
 
     //show edit info modal
-    $(document).on('click', '.dTableEdit', function () {
+    $(document).on('click', '.dTableEdit, .editCustoH', function () {
         var rowData = dTable.row($(this).parent()).data();
         _id = rowData.id;
         $('#full_name').val(rowData.full_name);
@@ -99,7 +99,32 @@
         ResetForm: function () {
             $("#inputForm").trigger('reset');
         },
+        Update: function (form, id) {
+            if (Message.Prompt()) {
+                JsManager.StartProcessBar();
+                var jsonParam = form.serialize() + "&id=" + id + "&phone_no=" + initTelephone.getNumber();
+                var serviceUrl = "customer-update";
+                JsManager.SendJson("POST", serviceUrl, jsonParam, onSuccess, onFailed);
 
+                function onSuccess(jsonData) {
+                    if (jsonData.status == "1") {
+                        Message.Success("update");
+                        _id = null;
+                        //Manager.ResetForm();
+                        Manager.GetDataList(1); //reload datatable
+                    } else {
+                        Message.Error("update");
+                    }
+                    JsManager.EndProcessBar();
+
+                }
+
+                function onFailed(xhr, status, err) {
+                    JsManager.EndProcessBar();
+                    Message.Exception(xhr);
+                }
+            }
+        },
         Save: function (form) {
             if (Message.Prompt()) {
                 JsManager.StartProcessBar();
@@ -115,33 +140,8 @@
                     } else {
                         Message.Error("save");
                     }
-                    JsManager.EndProcessBar();
-                }
 
-                function onFailed(xhr, status, err) {
                     JsManager.EndProcessBar();
-                    Message.Exception(xhr);
-                }
-            }
-        },
-        Update: function (form, id) {
-            if (Message.Prompt()) {
-                JsManager.StartProcessBar();
-                var jsonParam = form.serialize() + "&id=" + id + "&phone_no=" + initTelephone.getNumber();
-                var serviceUrl = "customer-update";
-                JsManager.SendJson("POST", serviceUrl, jsonParam, onSuccess, onFailed);
-
-                function onSuccess(jsonData) {
-                    if (jsonData.status == "1") {
-                        Message.Success("update");
-                        _id = null;
-                        Manager.ResetForm();
-                        Manager.GetDataList(1); //reload datatable
-                    } else {
-                        Message.Error("update");
-                    }
-                    JsManager.EndProcessBar();
-
                 }
 
                 function onFailed(xhr, status, err) {
@@ -174,7 +174,6 @@
                 }
             }
         },
-
         LoadUserDropdown: function () {
             var jsonParam = '';
             var serviceUrl = "get-customer-user";
@@ -193,7 +192,6 @@
                 Message.Exception(xhr);
             }
         },
-
         GetDataList: function (refresh) {
             var jsonParam = '';
             var serviceUrl = "get-customer";
@@ -207,8 +205,6 @@
                 Message.Exception(xhr);
             }
         },
-
-
         LoadDataTable: function (data, refresh) {
             if (refresh == "0") {
                 dTable = $('#tableElement').DataTable({
