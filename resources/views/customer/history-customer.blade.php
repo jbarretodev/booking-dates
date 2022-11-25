@@ -134,6 +134,7 @@
                             <button id="history_pa" type="button" class="btn btn-light">Historial de Citas</button>
                             <button id="record_pa" type="button" class="btn btn-light">Antecedentes del Paciente</button>
                             <button id="files_pa" type="button" class="btn btn-light">Archivos del Paciente</button>
+                            <button id="image_his" type="button" class="btn btn-light">Imagenes</button>
                         </div>
                     </div>
                 </div>
@@ -262,7 +263,9 @@
                             </tbody>
                         </table>
                         <hr class="mt-3">
+                    </div>
 
+                    <div id="images_his">
                         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                             <ol id="caru_indi" class="carousel-indicators">
 
@@ -278,6 +281,8 @@
                                 <span class="sr-only">Next</span>
                             </button>
                         </div>
+
+                        <hr class="mt-3">
                     </div>
                 </div>
             </div>
@@ -331,6 +336,13 @@
           }
         });
 
+        $("#history_patient").show();
+        $("#record_back").hide();
+        $("#images_his").hide();
+        $("#data_patient").hide();
+        $("#files_patient").hide();
+
+
         initTelephone.setNumber('+' + {{$customer->phone_no}});
 
         //show edit info modal
@@ -348,10 +360,6 @@
           Manager.DeleteRecordPast($(this).attr('id').split('-').pop());
         });
 
-        $("#history_patient").show();
-        $("#record_back").hide();
-        $("#files_patient").hide();
-        $("#data_patient").hide();
         //generate datatabe serial no
         dTableManager.dTableSerialNumber(dTable);
 
@@ -383,19 +391,29 @@
         $("#history_pa").click(function(){
           $("#history_patient").show();
           $("#record_back").hide();
+          $("#images_his").hide();
           $("#files_patient").hide();
         });
 
         $("#record_pa").click(function(){
           $("#history_patient").hide();
           $("#record_back").show();
+          $("#images_his").hide();
           $("#files_patient").hide();
         });
 
         $("#files_pa").click(function(){
           $("#history_patient").hide();
           $("#record_back").hide();
+          $("#images_his").hide();
           $("#files_patient").show();
+        });
+
+        $("#image_his").click(function(){
+          $("#history_patient").hide();
+          $("#record_back").hide();
+          $("#images_his").show();
+          $("#files_patient").hide();
         });
       });
 
