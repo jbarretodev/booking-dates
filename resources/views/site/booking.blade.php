@@ -10,8 +10,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="position-relative text-center">
-                    <h1 class="text-capitalize mb-3 text-white">{{translate('Appointment Booking')}}</h1>
-                    <a class="text-white" href="{{route('site.home')}}">{{translate('Home')}} </a>
+                    <h1 class="text-capitalize mb-3 text-white">{!! translate('Appointment Booking') !!}</h1>
+                    <a class="text-white" href="{{route('site.home')}}">{!! translate('Home') !!} </a>
                     <i class="icofont-long-arrow-right text-white"></i>
                     <a class="text-white" href="{{route('site.appoinment.booking')}}"> {{translate('Appointment Booking')}}</a>
                 </div>
@@ -31,7 +31,7 @@
                         <div class="support-man-icon mb-3">
                             <i class="icofont-support text-lg"></i>
                         </div>
-                        <span class="h3">{{translate('Call for any Emergency Support!')}}</span>
+                        <span class="h3">{!! translate('Call for any Emergency Support!') !!}</span>
                         <h2 class="text-color mt-3">{{$appearance->contact_phone}}</h2>
                     </div>
                 </div>
@@ -40,29 +40,29 @@
                 <div class="single-booking-area">
                         <form class="form-wrap" id="formServiceBooking">
                             <div id="serviceStep">
-                                <h3>{{translate('Service')}}</h3>
+                                <h3>{!! translate('Service') !!}</h3>
                                 <section>
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label for="cmn_branch_id" class="float-start">{{translate('Branch')}}</label>
+                                            <label for="cmn_branch_id" class="float-start">{!! translate('Branch') !!}</label>
                                             <select id="cmn_branch_id" name="cmn_branch_id" class="serviceInput form-control">
 
                                             </select>
                                         </div>
                                         <div class="col-md-3">
-                                            <label for="sch_service_category_id" class="float-start">{{translate('Category')}}</label>
+                                            <label for="sch_service_category_id" class="float-start">{!! translate('Category') !!}</label>
                                             <select id="sch_service_category_id" name="sch_service_category_id" class="serviceInput form-control">
 
                                             </select>
                                         </div>
                                         <div class="col-md-3">
-                                            <label for="sch_service_id" class="float-start">{{translate('Service')}}</label>
+                                            <label for="sch_service_id" class="float-start">{!! translate('Service') !!}</label>
                                             <select id="sch_service_id" name="sch_service_id" class="serviceInput form-control">
 
                                             </select>
                                         </div>
                                         <div class="col-md-3">
-                                            <label for="sch_employee_id" class="float-start">{{translate('Staff')}}</label>
+                                            <label for="sch_employee_id" class="float-start">{!! translate('Staff') !!}</label>
                                             <select id="sch_employee_id" name="sch_employee_id" class="serviceInput form-control">
                                             </select>
                                         </div>
@@ -71,7 +71,7 @@
                                         <div class="col-md-auto col-lg-auto col-sm-auto" id="divServiceCalendar">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <label for="serviceDate" class="float-start">{{translate('Service Date')}}</label>
+                                                    <label for="serviceDate" class="float-start">{!! translate('Service Date') !!}</label>
                                                 </div>
                                             </div>
                                             <div class="row">
