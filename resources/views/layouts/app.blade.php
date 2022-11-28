@@ -236,9 +236,9 @@
                                 <li>
 
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('change.user.password') }}">{{translate('Change Password')}}</a>
+                                    <a class="dropdown-item" href="{{ route('change.user.password') }}">{!! translate('Change Password') !!}</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" id="app-logout" href="{{ route('logout') }}">{{translate('Logout')}}</a>
+                                    <a class="dropdown-item" id="app-logout" href="{{ route('logout') }}">{!! translate('Logout') !!}</a>
                                 </li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
