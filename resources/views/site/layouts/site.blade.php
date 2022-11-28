@@ -69,9 +69,9 @@
 								</select>
 							</form>
 
-							<a class="me-3 color-white fs-12" href="{{route('site.appoinment.booking')}}"><i class="far fa-clock"></i> {{translate('Book Now')}}</a>
+							<a class="me-3 color-white fs-12" href="{{route('site.appoinment.booking')}}"><i class="far fa-clock"></i> {!! translate('Book Now') !!}</a>
 							@if (auth()->check() && auth()->user()->user_type==2)
-							<a class="me-3 color-white" href="{{route('client.dashboard')}}">{{translate('My Panel')}}</a>
+							<a class="me-3 color-white" href="{{route('client.dashboard')}}">{!! translate('My Panel') !!}</a>
 							@else
 							<a class="me-3 color-white fs-12" href="{{route('register')}}"><i class="fas fa-user-plus"></i> {{translate('Sign Up')}}</a>
 							<a class="me-3 color-white fs-12" href="{{route('login')}}"><i class="fas fa-sign-in-alt"></i> {{translate('Sign In')}}</a>
@@ -95,7 +95,7 @@
 					<ul class="navbar-nav ms-auto">
 						@foreach ($menuList->where('site_menu_id', 0) as $mTop)
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="{{route($mTop->route)}}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="@if($menuList->where('site_menu_id', $mTop->id)->count()>0) dropdown @endif" aria-expanded="false">{{translate($mTop->name)}}
+							<a class="nav-link dropdown-toggle" href="{{route($mTop->route)}}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="@if($menuList->where('site_menu_id', $mTop->id)->count()>0) dropdown @endif" aria-expanded="false">{!! translate($mTop->name) !!}
 								@if($menuList->where('site_menu_id', $mTop->id)->count()>0)
 								<i class="icofont-thin-down"></i>
 								@endif
