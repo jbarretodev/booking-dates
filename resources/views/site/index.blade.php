@@ -9,15 +9,15 @@
 		<div class="row">
 			<div class="col-lg-7 col-md-7 col-xs-12 about-service">
 				<div class="w100">
-					<h1 class="mb-3"> {{$appearance->motto}}</h1>
+					<h1 class="mb-3"> {!! $appearance->motto !!}</h1>
 					<p class="pr-5">
-						{{$appearance->about_service}}
+						{!! $appearance->about_service !!}
 					</p>
 				</div>
 			</div>
 			<div class="col-lg-5 col-md-5 col-xs-12 banner-right-content">
 				<div class="margin-top-110 float-right-banner">
-					<a href="{{route('site.appoinment.booking')}}" class="btn btn-booking btn-lg btn-full-round">{{translate('Book An Appointment')}} <i class="far fa-clock"></i></a>
+					<a href="{{route('site.appoinment.booking')}}" class="btn btn-booking btn-lg btn-full-round">{!! translate('Book An Appointment') !!} <i class="far fa-clock"></i></a>
 				</div>
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 							</div>
 						</div>
 						<div class="float-start single-item-service-summary-content">
-							<h2 class="text-total-service-count text-count mt-3">{{$serviceSummary['totalService']}}</h2>
+							<h2 class="text-total-service-count text-count mt-3">{!! $serviceSummary['totalService'] !!}</h2>
 							<h4 class="text-service-title">{{translate('Total Services')}}</h4>
 						</div>
 
@@ -56,7 +56,7 @@
 							</div>
 						</div>
 						<div class="float-start single-item-service-summary-content">
-							<h2 class="text-count text-exp-staff-count mt-3">{{$serviceSummary['totalEmloyee']}}</h2>
+							<h2 class="text-count text-exp-staff-count mt-3">{!! $serviceSummary['totalEmloyee'] !!}</h2>
 							<h4 class="text-service-title">{{translate('Expertise Staffs')}}</h4>
 						</div>
 
@@ -73,7 +73,7 @@
 							</div>
 						</div>
 						<div class="float-start single-item-service-summary-content">
-							<h2 class="text-count text-satisfied-client-count mt-3">{{$serviceSummary['SatiffiedClient']}}</h2>
+							<h2 class="text-count text-satisfied-client-count mt-3">{!! $serviceSummary['SatiffiedClient'] !!}</h2>
 							<h4 class="text-service-title">{{translate('Satisfied Clients')}}</h4>
 						</div>
 
@@ -90,7 +90,7 @@
 							</div>
 						</div>
 						<div class="float-start single-item-service-summary-content">
-							<h2 class="text-count text-done-service-count mt-3">{{$serviceSummary['DoneService']}}</h2>
+							<h2 class="text-count text-done-service-count mt-3">{!! $serviceSummary['DoneService'] !!}</h2>
 							<h4 class="text-service-title">{{translate('Done Services')}}</h4>
 						</div>
 
@@ -102,8 +102,8 @@
 		<div class="row d-flex justify-content-center">
 			<div class="col-lg-9">
 				<div class="text-center pb-3">
-					<h2 class="mb-10">{{translate('Available Our Top and Popular Services')}}</h2>
-					<p>{{translate('We calculate top services based on our client feedback and number of provided services.')}}</p>
+					<h2 class="mb-10">{!! translate('Available Our Top and Popular Services') !!}</h2>
+					<p>{!! translate('We calculate top services based on our client feedback and number of provided services.') !!}</p>
 				</div>
 			</div>
 		</div>
@@ -120,7 +120,7 @@
 					<p>
 						{{$value->remarks}}
 					</p>
-					<a href="{{route('site.service.single.details')}}/{{$value->sch_service_id}}" class="read-more">{{translate('Learn More')}} <i class="icofont-simple-right ml-2"></i></a>
+					<a href="{{route('site.service.single.details')}}/{{$value->sch_service_id}}" class="read-more">{!! translate('Learn More') !!} <i class="icofont-simple-right ml-2"></i></a>
 				</div>
 			</div>
 			@endforeach
@@ -153,7 +153,7 @@
 						<p>
 							{{ html_entity_decode($value->specialist) }}
 						</p>
-						<a href="{{route('site.appoinment.booking')}}" class="btn btn-booking-white">{{translate('Book Now')}}</a>
+						<a href="{{route('site.appoinment.booking')}}" class="btn btn-booking-white">{!! translate('Learn More') !!}</a>
 					</div>
 				</div>
 				@endforeach
@@ -170,8 +170,8 @@
 		<div class="row d-flex justify-content-center">
 			<div class="col-lg-9">
 				<div class="text-center pb-3">
-					<h2 class="mb-10">{{translate('Valuable Clients Testimonials')}}</h2>
-					<p>{{translate('We got testimonials from our valued clients both online and offline and they are very much happy.')}}</p>
+					<h2 class="mb-10">{!! translate('Valuable Clients Testimonials') !!}</h2>
+					<p>{!! translate('We got testimonials from our valued clients both online and offline and they are very much happy.') !!}</p>
 				</div>
 			</div>
 		</div>

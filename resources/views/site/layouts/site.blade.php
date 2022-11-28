@@ -73,8 +73,8 @@
 							@if (auth()->check() && auth()->user()->user_type==2)
 							<a class="me-3 color-white" href="{{route('client.dashboard')}}">{!! translate('My Panel') !!}</a>
 							@else
-							<a class="me-3 color-white fs-12" href="{{route('register')}}"><i class="fas fa-user-plus"></i> {{translate('Sign Up')}}</a>
-							<a class="me-3 color-white fs-12" href="{{route('login')}}"><i class="fas fa-sign-in-alt"></i> {{translate('Sign In')}}</a>
+							<a class="me-3 color-white fs-12" href="{{route('register')}}"><i class="fas fa-user-plus"></i> {!! translate('Sign Up') !!}</a>
+							<a class="me-3 color-white fs-12" href="{{route('login')}}"><i class="fas fa-sign-in-alt"></i> {!! translate('Sign In') !!}</a>
 							@endIf
 
 							</ul>
@@ -104,7 +104,7 @@
 
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 								@foreach ($menuList->where('site_menu_id', $mTop->id) as $c1)
-								<li><a class="dropdown-item" href="{{route($c1->route)}}">{{translate($c1->name)}}</a>
+								<li><a class="dropdown-item" href="{{route($c1->route)}}">{!! translate($c1->name) !!}</a>
 								</li>
 								@endforeach
 							</ul>
@@ -126,9 +126,9 @@
 			<div class="row mb-5">
 				<div class="col-lg-4 col-md-6 col-sm-6">
 					<div class="footer-widget">
-						<h3>{{translate('About Service')}}</h3>
+						<h3>{!! translate('About Service') !!}</h3>
 						<p>
-							{{$appearance->about_service}}
+							{!! $appearance->about_service !!}
 						</p>
 					</div>
 				</div>
@@ -139,16 +139,16 @@
 							<div class="col">
 								<ul>
 									@foreach ($menuList->where('site_menu_id', 0)->skip(0)->take(4) as $mTop)
-									<li><a href="{{route($mTop->route)}}">{{$mTop->name}}</a></li>
+									<li><a href="{{route($mTop->route)}}">{!! $mTop->name !!}</a></li>
 									@endforeach
 								</ul>
 							</div>
 							<div class="col">
 								<ul>
 									@foreach ($menuList->where('site_menu_id', 0)->skip(4) as $mTop)
-									<li><a href="{{route($mTop->route)}}">{{$mTop->name}}</a></li>
+									<li><a href="{{route($mTop->route)}}">{!! $mTop->name !!}</a></li>
 									@endforeach
-									<li><a href="{{route('site.terms.and.condition')}}">{{translate('Terms & Conditions')}}</a></li>
+									<li><a href="{{route('site.terms.and.condition')}}">{!! translate('Terms & Conditions') !!}</a></li>
 								</ul>
 							</div>
 						</div>
@@ -158,10 +158,10 @@
 					<div class="footer-widget">
 						<h3>{{translate('Contact Information')}}</h3>
 						<ul>
-							<li><a href="#">{{translate('Phone')}} : {{$appearance->contact_phone}}</a></li>
-							<li><a href="#">{{translate('Email to')}} : {{$appearance->contact_email}}</a></li>
-							<li><a href="#">{{translate('Website')}} : {{$appearance->contact_web}}</a></li>
-							<li><a href="#">{{translate('Address')}} : {{$appearance->address}}</a></li>
+							<li><a href="#">{{translate('Phone')}} : {!! $appearance->contact_phone !!}</a></li>
+							<li><a href="#">{{translate('Email to')}} : {!! $appearance->contact_email !!}</a></li>
+							<li><a href="#">{{translate('Website')}} : {!! $appearance->contact_web !!}</a></li>
+							<li><a href="#">{{translate('Address')}} : {!! $appearance->address !!}</a></li>
 						</ul>
 					</div>
 				</div>
@@ -178,7 +178,7 @@
 
 			<div class="row footer-button-section d-flex justify-content-between align-items-center">
 				<div class="col-lg-7 col-sm-12 fs-13">
-					Copyright &copy; {{now()->year}} All rights reserved | {{$appearance->app_name}}
+					Copyright &copy; {{now()->year}} All rights reserved | {!! $appearance->app_name !!}
 				</div>
 				<p class="col-lg-5 col-sm-12 footer-social-media">
 					<a href="{{$appearance->faccebook_link}}"><i class="fab fa-facebook-f fs-13"></i></a>
