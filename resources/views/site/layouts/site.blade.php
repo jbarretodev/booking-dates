@@ -134,7 +134,7 @@
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<div class="footer-widget">
-						<h3>{{translate('Website Navigation Links')}}</h3>
+						<h3>{!! translate('Website Navigation Links') !!}</h3>
 						<div class="row">
 							<div class="col">
 								<ul>
@@ -156,7 +156,7 @@
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<div class="footer-widget">
-						<h3>{{translate('Contact Information')}}</h3>
+						<h3>{!! translate('Contact Information') !!}</h3>
 						<ul>
 							<li><a href="#">{{translate('Phone')}} : {!! $appearance->contact_phone !!}</a></li>
 							<li><a href="#">{{translate('Email to')}} : {!! $appearance->contact_email !!}</a></li>
@@ -167,7 +167,7 @@
 				</div>
 				<div class="col-lg-2 col-md-6 col-sm-6">
 					<div class="footer-widget">
-						<h3 class="mb-20">{{translate('Payment Method')}}</h3>
+						<h3 class="mb-20">{!! translate('Payment Method') !!}</h3>
 						<ul class="d-flex flex-wrap">
 							<li class="p-1"><img src="img/paypal.png" width="50" alt=""></li>
 							<li class="p-1"><img src="img/stripe.png" width="50" alt=""></li>
