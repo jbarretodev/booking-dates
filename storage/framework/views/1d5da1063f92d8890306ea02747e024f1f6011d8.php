@@ -69,9 +69,9 @@
 								</select>
 							</form>
 
-							<a class="me-3 color-white fs-12" href="<?php echo e(route('site.appoinment.booking')); ?>"><i class="far fa-clock"></i> <?php echo e(translate('Book Now')); ?></a>
+							<a class="me-3 color-white fs-12" href="<?php echo e(route('site.appoinment.booking')); ?>"><i class="far fa-clock"></i> <?php echo translate('Book Now'); ?></a>
 							<?php if(auth()->check() && auth()->user()->user_type==2): ?>
-							<a class="me-3 color-white" href="<?php echo e(route('client.dashboard')); ?>"><?php echo e(translate('My Panel')); ?></a>
+							<a class="me-3 color-white" href="<?php echo e(route('client.dashboard')); ?>"><?php echo translate('My Panel'); ?></a>
 							<?php else: ?>
 							<a class="me-3 color-white fs-12" href="<?php echo e(route('register')); ?>"><i class="fas fa-user-plus"></i> <?php echo e(translate('Sign Up')); ?></a>
 							<a class="me-3 color-white fs-12" href="<?php echo e(route('login')); ?>"><i class="fas fa-sign-in-alt"></i> <?php echo e(translate('Sign In')); ?></a>
@@ -95,7 +95,7 @@
 					<ul class="navbar-nav ms-auto">
 						<?php $__currentLoopData = $menuList->where('site_menu_id', 0); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mTop): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="<?php echo e(route($mTop->route)); ?>" id="navbarDropdownMenuLink" role="button" data-bs-toggle="<?php if($menuList->where('site_menu_id', $mTop->id)->count()>0): ?> dropdown <?php endif; ?>" aria-expanded="false"><?php echo e(translate($mTop->name)); ?>
+							<a class="nav-link dropdown-toggle" href="<?php echo e(route($mTop->route)); ?>" id="navbarDropdownMenuLink" role="button" data-bs-toggle="<?php if($menuList->where('site_menu_id', $mTop->id)->count()>0): ?> dropdown <?php endif; ?>" aria-expanded="false"><?php echo translate($mTop->name); ?>
 
 								<?php if($menuList->where('site_menu_id', $mTop->id)->count()>0): ?>
 								<i class="icofont-thin-down"></i>

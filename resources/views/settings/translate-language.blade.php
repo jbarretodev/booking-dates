@@ -9,7 +9,7 @@
                     <div class="card-header">
                         <div class="d-flex align-items-center">
                             <h4 class="card-title">
-                                {{translate('Translate')}} English => <b>{{$translateLang}}</b>
+                                {{translate('Translate')}} English => <b>{!! $translateLang !!}</b>
                             </h4>
                         </div>
                     </div>

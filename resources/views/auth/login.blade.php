@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <div class="ml-auto">
-                                        <button type="submit" class="btn btn-shadow btn-primary">{{ translate('Click to Login') }}</button>
+                                        <button type="submit" class="btn btn-shadow btn-primary">{!! translate('Click to Login') !!}</button>
                                     </div>
 
                                 </div>

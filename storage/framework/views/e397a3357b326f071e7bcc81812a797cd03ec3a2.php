@@ -240,9 +240,9 @@
                                 <li>
 
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="<?php echo e(route('change.user.password')); ?>"><?php echo e(translate('Change Password')); ?></a>
+                                    <a class="dropdown-item" href="<?php echo e(route('change.user.password')); ?>"><?php echo translate('Change Password'); ?></a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" id="app-logout" href="<?php echo e(route('logout')); ?>"><?php echo e(translate('Logout')); ?></a>
+                                    <a class="dropdown-item" id="app-logout" href="<?php echo e(route('logout')); ?>"><?php echo translate('Logout'); ?></a>
                                 </li>
                                 <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
                                     <?php echo csrf_field(); ?>

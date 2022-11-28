@@ -282,7 +282,7 @@
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#base{{ $item->id }}" class="collapsed" aria-expanded="false">
                                 <i class="{{ $item->icon }}"></i>
-                                <p>{{ translate($item->display_name) }}</p>
+                                <p>{!! translate($item->display_name) !!}</p>
                                 <span class="caret"></span>
                             </a>
                             <div class="collapse" id="base{{ $item->id }}">
@@ -290,7 +290,7 @@
                                     @foreach ($menuList->where('level', 2)->where('resource_id', $item->id) as $item1)
                                         <li>
                                             <a href="{{ route($item1->method) }}">
-                                                <span class="sub-item"> {{ translate($item1->display_name) }}</span>
+                                                <span class="sub-item"> {!! translate($item1->display_name) !!}</span>
                                             </a>
                                         </li>
                                     @endforeach
