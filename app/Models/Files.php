@@ -10,6 +10,9 @@ class Files extends Model
     use HasFactory;
 
     protected $table = 'files';
+    protected $casts = [
+        'created_at' => "date:Y-m-d",
+    ];
     protected $fillable = [
         'name',
         'path',

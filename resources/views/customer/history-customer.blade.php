@@ -129,12 +129,32 @@
                         <h4 class="card-title">
                             Ficha historial del cliente
                         </h4>
-                        <div class="ml-xl-5">
+                        <div class="btn-group ml-5">
                             <button type="button" class="btn btn-light editCustoH">Datos del Paciente</button>
                             <button id="history_pa" type="button" class="btn btn-light">Historial de Citas</button>
                             <button id="record_pa" type="button" class="btn btn-light">Antecedentes del Paciente</button>
-                            <button id="files_pa" type="button" class="btn btn-light">Archivos del Paciente</button>
-                            <button id="image_his" type="button" class="btn btn-light">Imagenes</button>
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    Archivos del Paciente
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" id="files_pa" href="#">Ver Archivos</a>
+                                    <a class="dropdown-item" href="{{ route('customer.upload-files') }}">Cargar Archivo</a>
+                                </div>
+                            </div>
+
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    Imágenes
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" id="image_his" href="#">Galería de Imágenes</a>
+                                    <a class="dropdown-item" href="{{ route('customer.upload-files') }}">Subir Imagenes</a>
+                                </div>
+                            </div>
+
+{{--                            <button  type="button" class="btn ">Archivos del Paciente</button>--}}
+{{--                            <button  type="button" class="btn btn-light">Imagenes</button>--}}
                         </div>
                     </div>
                 </div>
@@ -142,63 +162,63 @@
                 <input type="hidden" id="customerId" value="{{ $customer->id }}">
 
                 <div class="card-body">
-                    <div id="data_patient">
-                        <form>
-                            <div class="row">
-                                <div class="col form-group">
-                                    <label>{{translate('Customer Name')}}</label>
-                                    <input type="text" id="complete-name" class="form-control" value="{{ $customer->full_name ?? 'N/A' }}" disabled placeholder="Nombre Completo">
-                                </div>
-                                <div class="col form-group">
-                                    <label>Customer Email</label>
-                                    <input type="text" class="form-control" value="{{ $user->email ?? 'N/A' }}" disabled placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="row mt-1">
-                                <div class="col form-group">
-                                    <label>{{translate('Date of Birth')}} </label>
-                                    <input type="text" class="form-control" value="{{ $customer->dob }}" disabled placeholder="Fecha de Nacimiento">
-                                </div>
-                                <div class="col form-group">
-                                    <label class="col-md-12 p-0">{{translate('Customer Phone')}}</label>
-                                    <input type="text" class="form-control" value="{{ $customer->phone_no }}" disabled placeholder="Telefono">
-                                </div>
-                            </div>
-                            <div class="row mt-1">
-                                <div class="col form-group">
-                                    <label>{{translate('Country')}}</label>
-                                    <input type="text" class="form-control" value="{{ $customer->country }}" disabled placeholder="Pais">
-                                </div>
-                                <div class="col form-group">
-                                    <label>{{translate('City')}}</label>
-                                    <input type="text" class="form-control" value="{{ $customer->city }}" disabled placeholder="Ciudad">
-                                </div>
-                            </div>
-                            <div class="row mt-1">
-                                <div class="col form-group">
-                                    <label>{{translate('Street Address')}}</label>
-                                    <textarea name="address" placeholder="Direccion" class="form-control" id="" cols="20" disabled rows="5">
-                                    {{ $customer->street_address }}
-                                </textarea>
-                                </div>
-                                <div class="col form-group">
-                                    <label>{{translate('Postal Code')}}</label>
-                                    <input type="text" class="form-control" value="{{ $customer->postal_code }}" disabled placeholder="Codigo Postal">
-                                </div>
-                            </div>
-                            <div class="row mt-1">
-                                <div class="col form-group">
-                                    <label>{{translate('State Name')}}</label>
-                                    <input type="text" class="form-control" value="{{ $customer->state }}" disabled placeholder="Estado">
-                                </div>
-                                <div class="col form-group">
-                                    <label>{{translate('Remarks')}}</label>
-                                    <input type="text" class="form-control" value="{{ $customer->remarks }}" disabled placeholder="Observaciones">
-                                </div>
-                            </div>
-                        </form>
-                        <hr class="mt-2">
-                    </div>
+                    {{--                    <div id="data_patient">--}}
+                    {{--                        <form>--}}
+                    {{--                            <div class="row">--}}
+                    {{--                                <div class="col form-group">--}}
+                    {{--                                    <label>{{translate('Customer Name')}}</label>--}}
+                    {{--                                    <input type="text" id="complete-name" class="form-control" value="{{ $customer->full_name ?? 'N/A' }}" disabled placeholder="Nombre Completo">--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="col form-group">--}}
+                    {{--                                    <label>Customer Email</label>--}}
+                    {{--                                    <input type="text" class="form-control" value="{{ $user->email ?? 'N/A' }}" disabled placeholder="Email">--}}
+                    {{--                                </div>--}}
+                    {{--                            </div>--}}
+                    {{--                            <div class="row mt-1">--}}
+                    {{--                                <div class="col form-group">--}}
+                    {{--                                    <label>{{translate('Date of Birth')}} </label>--}}
+                    {{--                                    <input type="text" class="form-control" value="{{ $customer->dob }}" disabled placeholder="Fecha de Nacimiento">--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="col form-group">--}}
+                    {{--                                    <label class="col-md-12 p-0">{{translate('Customer Phone')}}</label>--}}
+                    {{--                                    <input type="text" class="form-control" value="{{ $customer->phone_no }}" disabled placeholder="Telefono">--}}
+                    {{--                                </div>--}}
+                    {{--                            </div>--}}
+                    {{--                            <div class="row mt-1">--}}
+                    {{--                                <div class="col form-group">--}}
+                    {{--                                    <label>{{translate('Country')}}</label>--}}
+                    {{--                                    <input type="text" class="form-control" value="{{ $customer->country }}" disabled placeholder="Pais">--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="col form-group">--}}
+                    {{--                                    <label>{{translate('City')}}</label>--}}
+                    {{--                                    <input type="text" class="form-control" value="{{ $customer->city }}" disabled placeholder="Ciudad">--}}
+                    {{--                                </div>--}}
+                    {{--                            </div>--}}
+                    {{--                            <div class="row mt-1">--}}
+                    {{--                                <div class="col form-group">--}}
+                    {{--                                    <label>{{translate('Street Address')}}</label>--}}
+                    {{--                                    <textarea name="address" placeholder="Direccion" class="form-control" id="" cols="20" disabled rows="5">--}}
+                    {{--                                    {{ $customer->street_address }}--}}
+                    {{--                                </textarea>--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="col form-group">--}}
+                    {{--                                    <label>{{translate('Postal Code')}}</label>--}}
+                    {{--                                    <input type="text" class="form-control" value="{{ $customer->postal_code }}" disabled placeholder="Codigo Postal">--}}
+                    {{--                                </div>--}}
+                    {{--                            </div>--}}
+                    {{--                            <div class="row mt-1">--}}
+                    {{--                                <div class="col form-group">--}}
+                    {{--                                    <label>{{translate('State Name')}}</label>--}}
+                    {{--                                    <input type="text" class="form-control" value="{{ $customer->state }}" disabled placeholder="Estado">--}}
+                    {{--                                </div>--}}
+                    {{--                                <div class="col form-group">--}}
+                    {{--                                    <label>{{translate('Remarks')}}</label>--}}
+                    {{--                                    <input type="text" class="form-control" value="{{ $customer->remarks }}" disabled placeholder="Observaciones">--}}
+                    {{--                                </div>--}}
+                    {{--                            </div>--}}
+                    {{--                        </form>--}}
+                    {{--                        <hr class="mt-2">--}}
+                    {{--                    </div>--}}
 
                     <div id="history_patient">
                         <h4 class="card-title">
@@ -238,16 +258,6 @@
                         <h4 class="card-title">
                             Subida de Archivos
                         </h4>
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label for="file_up">Seleccione un Archivo</label>
-                                <input type="file" class="form-control-file" id="file_up">
-                                <button type="button" id="upload-file" class="mt-2 btn btn-primary">Subir Archivo</button>
-                            </div>
-                        </form>
-
-                        <hr class="mt-3">
-
                         <h4 class="card-title">
                             Listado de Archivos
                         </h4>
@@ -255,6 +265,7 @@
                             <thead>
                             <tr>
                                 <td>Nombre del Archivo</td>
+                                <td>Fecha De Subida</td>
                                 <td>Acciones</td>
                             </tr>
                             </thead>
@@ -603,6 +614,7 @@
             for(var i = 0; i < jsonData.length; i++){
               var html = `<tr>
                             <td> <a href="${jsonData[i]['path']}">${jsonData[i]['name']}</a></td>
+                            <td>${jsonData[i]['created_at']}</td>
                             <td>
                               <button id="file-${jsonData[i]['id']}" class="btn btn-primary"><i class="fas fa-trash-alt"></i></button>
                             </td>
@@ -637,19 +649,19 @@
                 $("#caru_item").append(`<div class="carousel-item active">
                                     <img src="${jsonData[i]['path']}" class="d-block w-100" alt="...">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <h5>${jsonData[i]['created_at']}</h5>
+                                        <h5>Subido - ${jsonData[i]['created_at']}</h5>
+                                    </div>
+                                </div>`);
+              }else{
+                $("#caru_indi").append(`<li data-target="#carouselExampleCaptions" data-slide-to="${i}"></li>`);
+
+                $("#caru_item").append(`<div class="carousel-item">
+                                    <img src="${jsonData[i]['path']}" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Subido - ${jsonData[i]['created_at']}</h5>
                                     </div>
                                 </div>`);
               }
-
-              $("#caru_indi").append(`<li data-target="#carouselExampleCaptions" data-slide-to="${i}"></li>`);
-
-              $("#caru_item").append(`<div class="carousel-item">
-                                    <img src="${jsonData[i]['path']}" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>${jsonData[i]['created_at']}</h5>
-                                    </div>
-                                </div>`);
             }
           }
 
