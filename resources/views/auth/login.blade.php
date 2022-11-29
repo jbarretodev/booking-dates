@@ -41,7 +41,7 @@
                                 <div class="form-row">
                                     <div class="col-md-12">
                                         <div class="position-relative form-group">
-                                            <label for="username" class="">{{ translate('Email') }}</label>
+                                            <label for="username" class="">{!! translate('Email') !!}</label>
                                             <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus placeholder="{{translate('Eamil Or Username')}}" />
 
                                             @error('username')
@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="position-relative form-group">
-                                            <label for="password" class="">{{ translate('Password') }}</label>
+                                            <label for="password" class="">{!! translate('Password') !!}</label>
                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password here">
 
                                             @error('password')
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="position-relative form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="remember">{{ translate('Remember Me') }}
+                                    <label class="form-check-label" for="remember">{!! translate('Remember Me') !!}
                                     </label>
                                 </div>
                                 <div class="d-flex align-items-center">
@@ -100,19 +100,16 @@
                                 <div class="align-items-center text-center mt-5">
                                     @if (Route::has('password.request'))
                                     <a class="btn-lg btn btn-link fs-16" href="{{ route('password.request') }}">
-                                        {{ translate('Forgot Your Password?') }}
+                                        {!! translate('Forgot Your Password?') !!}
                                     </a>
                                     @endif
                                 </div>
 
                                 <div class="align-items-center text-center">
                                     <a class="btn-lg btn btn-link fs-16" href="{{ route('site.home') }}">
-                                        {{ translate('Go to Website') }}
+                                        {!! translate('Go to Website') !!}
                                     </a>
                                 </div>
-
-                              
-
                             </form>
                         </div>
                     </div>
