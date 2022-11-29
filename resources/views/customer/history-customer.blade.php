@@ -129,6 +129,7 @@
                         <h4 class="card-title">
                             Ficha historial del cliente
                         </h4>
+
                         <div class="btn-group ml-5">
                             <button type="button" class="btn btn-light editCustoH">Datos del Paciente</button>
                             <button id="history_pa" type="button" class="btn btn-light">Historial de Citas</button>
@@ -274,20 +275,26 @@
                     </div>
 
                     <div id="images_his">
-                        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                            <ol id="caru_indi" class="carousel-indicators">
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-7">
+                                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                                    <ol id="caru_indi" class="carousel-indicators">
 
-                            </ol>
-                            <div id="caru_item" class="carousel-inner">
+                                    </ol>
+                                    <div id="caru_item" class="carousel-inner">
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </button>
+                            <div class="col-lg-3"></div>
                         </div>
 
                         <hr class="mt-3">
