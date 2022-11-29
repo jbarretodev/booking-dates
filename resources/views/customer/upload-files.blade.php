@@ -48,7 +48,7 @@
         JsManager.SendJsonWithFile('POST', serviceUrl, data, onSuccess, onFailed);
 
         function onSuccess(jsonData) {
-          Manager.LoadAllFiles($('#customerId').val());
+          //Manager.LoadAllFiles($('#customerId').val());
           JsManager.EndProcessBar();
         }
 
