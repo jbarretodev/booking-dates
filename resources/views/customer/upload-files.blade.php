@@ -48,6 +48,7 @@
         JsManager.SendJsonWithFile('POST', serviceUrl, data, onSuccess, onFailed);
 
         function onSuccess(jsonData) {
+          alert("Archivo subido exitosamente!");
           //Manager.LoadAllFiles($('#customerId').val());
           JsManager.EndProcessBar();
         }
