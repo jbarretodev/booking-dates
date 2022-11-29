@@ -25,35 +25,39 @@
     </div>
 </div>
 <script>
-  $("#upload-file").click(function(){
-    if( document.getElementById("file_up").files.length == 0 ){
-      alert("Error! Debe seleccionar un archivo");
-      return false;
-    }
+  $(function(){
 
-    var formData = new FormData();
-    formData.append('file', $('#file_up')[0].files[0]);
-    formData.append('customer_id',$("#customerId").val());
+    $("#upload-file").click(function(){
+      if( document.getElementById("file_up").files.length == 0 ){
+        alert("Error! Debe seleccionar un archivo");
+        return false;
+      }
+      var customer = window.location.href.split('/').pop();
+      var formData = new FormData();
 
-    Manager.UploadFile(formData);
+      formData.append('file', $('#file_up')[0].files[0]);
+      formData.append('customer_id',customer);
+
+      Manager.UploadFile(formData);
+    });
+
+    var Manager = {
+      UploadFile: function(data){
+        JsManager.StartProcessBar();
+        var serviceUrl = "save-file";
+        JsManager.SendJsonWithFile('POST', serviceUrl, data, onSuccess, onFailed);
+
+        function onSuccess(jsonData) {
+          Manager.LoadAllFiles($('#customerId').val());
+          JsManager.EndProcessBar();
+        }
+
+        function onFailed(xhr, status, err) {
+          JsManager.EndProcessBar();
+          Message.Exception(xhr);
+        }
+      },
+    };
   });
-
-  var Manager = {
-    UploadFile: function(data){
-      JsManager.StartProcessBar();
-      var serviceUrl = "save-file";
-      JsManager.SendJsonWithFile('POST', serviceUrl, data, onSuccess, onFailed);
-
-      function onSuccess(jsonData) {
-        Manager.LoadAllFiles($('#customerId').val());
-        JsManager.EndProcessBar();
-      }
-
-      function onFailed(xhr, status, err) {
-        JsManager.EndProcessBar();
-        Message.Exception(xhr);
-      }
-    },
-  };
 </script>
 @endsection

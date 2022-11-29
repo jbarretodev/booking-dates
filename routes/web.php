@@ -223,7 +223,7 @@ Route::group(['middleware' => 'xssProtection'], function () {
             Route::get('translate-language/{id?}', [App\Http\Controllers\Settings\LanguageController::class, 'translateLanguage'])->name('translate.language');
             Route::get('language-translation-list', [App\Http\Controllers\Settings\LanguageController::class, 'translateLanguageList'])->name('language.translation.list');
 
-            Route::get('customer-upload-files',function(){
+            Route::get('customer-upload-files/{id}',function(){
                 return view('customer.upload-files');
             })->name('customer.upload-files');
         });

@@ -139,7 +139,7 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" id="files_pa" href="#">Ver Archivos</a>
-                                    <a class="dropdown-item" href="{{ route('customer.upload-files') }}">Cargar Archivo</a>
+                                    <a class="dropdown-item" href="{{ url('customer-upload-files/' . $customer->id) }}">Cargar Archivo</a>
                                 </div>
                             </div>
 
@@ -149,7 +149,7 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" id="image_his" href="#">Galería de Imágenes</a>
-                                    <a class="dropdown-item" href="{{ route('customer.upload-files') }}">Subir Imagenes</a>
+                                    <a class="dropdown-item" href="{{ url('customer-upload-files/' . $customer->id) }}">Subir Imagenes</a>
                                 </div>
                             </div>
 
@@ -255,9 +255,6 @@
                     </div>
 
                     <div id="files_patient">
-                        <h4 class="card-title">
-                            Subida de Archivos
-                        </h4>
                         <h4 class="card-title">
                             Listado de Archivos
                         </h4>
