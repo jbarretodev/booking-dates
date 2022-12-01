@@ -120,6 +120,54 @@
         </div>
     </div>
 
+    <!--Modal-->
+    <div class="modal fade" id="frmModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <form class="form-horizontal" id="inputForm" novalidate="novalidate">
+                    <div class="modal-body">
+                        <h5 class="modal-title">
+                            <span class="fw-mediumbold">
+                            {{translate('Booking No#')}} <span id="span-booking-no"></span>
+                            </span>
+                        </h5>
+                        <input type="hidden" id="id" name="id" />
+                        <div class="form-group control-group form-inline">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span>{{translate('Service Status')}}</span>
+                                    <select id="status" name="status" class="form-control input-full">
+                                        <option selected value="0">Pending</option>
+                                        <option value="1">Processing</option>
+                                        <option value="2">Approved</option>
+                                        <option value="3">Cancel</option>
+                                        <option value="4">Done</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12 control-group">
+                                    <div class="form-group control-group form-inline">
+                                        <label class="switch">
+                                            <input id=email_notify name="email_notify" type="checkbox" value="1" class="rm-slider">
+                                            <span class="slider round"></span>
+                                        </label>
+                                        <label class="pt-1 ml-1"> {{translate('Send notification by email')}}</label>
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer pb-0 pr-2">
+                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">{{translate('Close')}}</button>
+                            <button type="submit" class="btn btn-success btn-sm">{{translate('Save Change')}}</button>
+
+                        </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
     <!-- category datatable -->
     <div class="row">
         <div class="col-md-12">
