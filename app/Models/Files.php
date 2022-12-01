@@ -15,6 +15,7 @@ class Files extends Model
     ];
     protected $fillable = [
         'name',
+        'original_name',
         'path',
         'cmn_customer_id',
     ];

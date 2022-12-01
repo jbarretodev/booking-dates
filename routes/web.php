@@ -117,6 +117,7 @@ Route::group(['middleware' => 'xssProtection'], function () {
             Route::get('get-files-image/{id}',[\App\Http\Controllers\FilesController::class,'getOnlyImages']);
             Route::post('save-record-past',[\App\Http\Controllers\RecordPastController::class,'saveNewRecordPast'])->name('new-record-past');
             Route::get('get-record-past/{id}',[\App\Http\Controllers\RecordPastController::class,'getRecordPastByCustomer'])->name('get-record-past');
+            Route::get('get-record-past-his/{id}',[\App\Http\Controllers\RecordPastController::class,'getRecordPastByCustomerHis'])->name('get-record-past');
             Route::get('delete-record-past/{id}',[\App\Http\Controllers\RecordPastController::class,'deleteRecordPast'])->name('get-record-past');
             Route::get('error-display', [App\Http\Controllers\HomeController::class, 'errorDisplay'])->name('error.display');
             Route::get('/home', [App\Http\Controllers\Dashboard\DashboardController::class, 'home'])->name('home');

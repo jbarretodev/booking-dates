@@ -14,7 +14,12 @@ class RecordPastController extends Controller
 
     public function getRecordPastByCustomer($id): \Illuminate\Http\JsonResponse
     {
-        return response()->json(RecordPast::where('cmn_customer_id',$id)->get());
+        return response()->json(RecordPast::where('cmn_customer_id',$id)->where("status",2)->get());
+    }
+
+    public function getRecordPastByCustomerHis($id): \Illuminate\Http\JsonResponse
+    {
+        return response()->json(RecordPast::where('cmn_customer_id',$id)->where("status",1)->get());
     }
 
     public function deleteRecordPast($id): \Illuminate\Http\JsonResponse

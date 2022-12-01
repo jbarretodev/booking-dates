@@ -24,6 +24,7 @@ class FilesController extends Controller
         $newFile = Files::create([
             'name' => $name.'.'.$ext,
             'path' => $path,
+            'original_name' => $request->file('file')->getClientOriginalName(),
             'cmn_customer_id' => $request->input('customer_id')
         ]);
 

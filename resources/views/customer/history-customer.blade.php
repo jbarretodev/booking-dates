@@ -127,20 +127,21 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <h4 class="card-title">
-                            Ficha historial del cliente
+                            Ficha Historica
                         </h4>
 
                         <div class="btn-group ml-5">
-                            <button type="button" class="btn btn-light editCustoH">Datos del Paciente</button>
-                            <button id="history_pa" type="button" class="btn btn-light">Historial de Citas</button>
-                            <button id="record_pa" type="button" class="btn btn-light">Antecedentes del Paciente</button>
+                            <button type="button" class="btn btn-light historical_patient">Historial</button>
+                            <button type="button" class="btn btn-light editCustoH">Datos</button>
+                            <button id="history_pa" type="button" class="btn btn-light">Citas</button>
+                            <button id="record_pa" type="button" class="btn btn-light">Antecedentes</button>
                             <div class="dropdown">
                                 <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    Archivos del Paciente
+                                    Archivos
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" id="files_pa" href="#">Ver Archivos</a>
-                                    <a class="dropdown-item" href="{{ url('customer-upload-files/' . $customer->id) }}">Cargar Archivo</a>
+                                    <a class="dropdown-item" id="upload_files" href="#">Cargar Archivo</a>
                                 </div>
                             </div>
 
@@ -150,12 +151,9 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" id="image_his" href="#">Galería de Imágenes</a>
-                                    <a class="dropdown-item" href="{{ url('customer-upload-files/' . $customer->id) }}">Subir Imagenes</a>
+                                    <a class="dropdown-item" id="upload_files" href="#">Subir Imagenes</a>
                                 </div>
                             </div>
-
-{{--                            <button  type="button" class="btn ">Archivos del Paciente</button>--}}
-{{--                            <button  type="button" class="btn btn-light">Imagenes</button>--}}
                         </div>
                     </div>
                 </div>
@@ -163,69 +161,46 @@
                 <input type="hidden" id="customerId" value="{{ $customer->id }}">
 
                 <div class="card-body">
-                    {{--                    <div id="data_patient">--}}
-                    {{--                        <form>--}}
-                    {{--                            <div class="row">--}}
-                    {{--                                <div class="col form-group">--}}
-                    {{--                                    <label>{{translate('Customer Name')}}</label>--}}
-                    {{--                                    <input type="text" id="complete-name" class="form-control" value="{{ $customer->full_name ?? 'N/A' }}" disabled placeholder="Nombre Completo">--}}
-                    {{--                                </div>--}}
-                    {{--                                <div class="col form-group">--}}
-                    {{--                                    <label>Customer Email</label>--}}
-                    {{--                                    <input type="text" class="form-control" value="{{ $user->email ?? 'N/A' }}" disabled placeholder="Email">--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
-                    {{--                            <div class="row mt-1">--}}
-                    {{--                                <div class="col form-group">--}}
-                    {{--                                    <label>{{translate('Date of Birth')}} </label>--}}
-                    {{--                                    <input type="text" class="form-control" value="{{ $customer->dob }}" disabled placeholder="Fecha de Nacimiento">--}}
-                    {{--                                </div>--}}
-                    {{--                                <div class="col form-group">--}}
-                    {{--                                    <label class="col-md-12 p-0">{{translate('Customer Phone')}}</label>--}}
-                    {{--                                    <input type="text" class="form-control" value="{{ $customer->phone_no }}" disabled placeholder="Telefono">--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
-                    {{--                            <div class="row mt-1">--}}
-                    {{--                                <div class="col form-group">--}}
-                    {{--                                    <label>{{translate('Country')}}</label>--}}
-                    {{--                                    <input type="text" class="form-control" value="{{ $customer->country }}" disabled placeholder="Pais">--}}
-                    {{--                                </div>--}}
-                    {{--                                <div class="col form-group">--}}
-                    {{--                                    <label>{{translate('City')}}</label>--}}
-                    {{--                                    <input type="text" class="form-control" value="{{ $customer->city }}" disabled placeholder="Ciudad">--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
-                    {{--                            <div class="row mt-1">--}}
-                    {{--                                <div class="col form-group">--}}
-                    {{--                                    <label>{{translate('Street Address')}}</label>--}}
-                    {{--                                    <textarea name="address" placeholder="Direccion" class="form-control" id="" cols="20" disabled rows="5">--}}
-                    {{--                                    {{ $customer->street_address }}--}}
-                    {{--                                </textarea>--}}
-                    {{--                                </div>--}}
-                    {{--                                <div class="col form-group">--}}
-                    {{--                                    <label>{{translate('Postal Code')}}</label>--}}
-                    {{--                                    <input type="text" class="form-control" value="{{ $customer->postal_code }}" disabled placeholder="Codigo Postal">--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
-                    {{--                            <div class="row mt-1">--}}
-                    {{--                                <div class="col form-group">--}}
-                    {{--                                    <label>{{translate('State Name')}}</label>--}}
-                    {{--                                    <input type="text" class="form-control" value="{{ $customer->state }}" disabled placeholder="Estado">--}}
-                    {{--                                </div>--}}
-                    {{--                                <div class="col form-group">--}}
-                    {{--                                    <label>{{translate('Remarks')}}</label>--}}
-                    {{--                                    <input type="text" class="form-control" value="{{ $customer->remarks }}" disabled placeholder="Observaciones">--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
-                    {{--                        </form>--}}
-                    {{--                        <hr class="mt-2">--}}
-                    {{--                    </div>--}}
+
+                    <div id="historical_pat">
+                        <h4 class="card-title">
+                            Registro de Historial
+                        </h4>
+                        <form>
+                            <div class="form-group">
+                                <label for="title_record_past">Titulo</label>
+                                <input class="form-control" name="title_record_past" id="title_record_past">
+                            </div>
+                            <div class="form-group">
+                                <label for="record_past_his">Historial</label>
+                                <textarea class="form-control" name="record_past" id="record_past_his" cols="30" rows="5"></textarea>
+                            </div>
+                            <button type="button" id="send_past_histo" class="btn btn-primary">Enviar</button>
+                        </form>
+
+                        <table class="table table-bordered mt-3">
+                            <thead>
+                            <tr>
+                                <td>Titulo</td>
+                                <td>Descripción</td>
+                                <td>Fecha de Creacion</td>
+                                <td>Acciones</td>
+                            </tr>
+                            </thead>
+                            <tbody id="tbl-record-his">
+
+                            </tbody>
+                        </table>
+                        <hr class="mt-3">
+                    </div>
 
                     <div id="history_patient">
                         <h4 class="card-title">
                             Historial de Citas
                         </h4>
-                        <table id="tableElement" class="mt-3 table table-bordered w100"></table>
+                        <div class="table-responsive">
+                            <table id="tableElement" class="mt-3 table table-bordered w100"></table>
+                        </div>
                         <hr class="mt-2">
                     </div>
 
@@ -245,6 +220,7 @@
                             <thead>
                             <tr>
                                 <td>Descripción</td>
+                                <td>Fecha de Creacion</td>
                                 <td>Acciones</td>
                             </tr>
                             </thead>
@@ -275,6 +251,7 @@
                     </div>
 
                     <div id="images_his">
+                        <h4>Carrusel de Imagenes</h4>
                         <div class="row">
                             <div class="col-lg-2"></div>
                             <div class="col-lg-7">
@@ -299,6 +276,21 @@
 
                         <hr class="mt-3">
                     </div>
+
+                    <div id="upload-files">
+                        <h4 class="card-title">
+                            Subida de archivos o imágenes
+                        </h4>
+
+                        <form class="form-inline justify-content-center">
+                            <div class="form-group">
+                                <label for="file_up">Seleccione un Archivo</label>
+                                <input type="file" class="form-control-file" id="file_up">
+                                <button type="button" id="uploadFiles" class="mt-2 btn btn-primary">Subir Archivo</button>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -340,6 +332,7 @@
         Manager.LoadAllFiles($('#customerId').val());
         Manager.LoadAllFilesImages($('#customerId').val());
         Manager.LoadAllRecordPast($('#customerId').val());
+        Manager.LoadAllRecordPastHis($('#customerId').val());
 
         //save or update
         JsManager.JqBootstrapValidation('#inputFormH', (form, event) => {
@@ -356,6 +349,42 @@
         $("#images_his").hide();
         $("#data_patient").hide();
         $("#files_patient").hide();
+        $("#upload-files").hide();
+        $("#historical_pat").hide();
+
+        $("#uploadFiles").click(function(){
+          if( document.getElementById("file_up").files.length == 0 ){
+            alert("Error! Debe seleccionar un archivo");
+            return false;
+          }
+
+          var formData = new FormData();
+
+          formData.append('file', $('#file_up')[0].files[0]);
+          formData.append('customer_id', $("#customerId").val());
+
+          Manager.UploadFile(formData);
+        });
+
+        $("#send_past_histo").click(function(){
+
+          if( $.trim($("#title_record_past").val()) === "" ){
+            alert("Error! El titulo del historial esta vacio!");
+            return false;
+          }
+
+          if( $.trim($("#record_past_his").val()) === "" ){
+            alert("Error! El campo de historial esta vacio!");
+            return false;
+          }
+
+          Manager.SendRecordPastHis({
+            description: $("#record_past_his").val(),
+            title: $("#title_record_past").val(),
+            cmn_customer_id: $('#customerId').val(),
+            status: 1,
+          });
+        });
 
 
         initTelephone.setNumber('+' + {{$customer->phone_no}});
@@ -400,6 +429,7 @@
           Manager.SendRecordPast({
             description:$("#record_past").val(),
             cmn_customer_id: $('#customerId').val(),
+            status: 2,
           });
         });
 
@@ -408,6 +438,8 @@
           $("#record_back").hide();
           $("#images_his").hide();
           $("#files_patient").hide();
+          $("#upload-files").hide();
+          $("#historical_pat").hide();
         });
 
         $("#record_pa").click(function(){
@@ -415,6 +447,8 @@
           $("#record_back").show();
           $("#images_his").hide();
           $("#files_patient").hide();
+          $("#upload-files").hide();
+          $("#historical_pat").hide();
         });
 
         $("#files_pa").click(function(){
@@ -422,6 +456,8 @@
           $("#record_back").hide();
           $("#images_his").hide();
           $("#files_patient").show();
+          $("#upload-files").hide();
+          $("#historical_pat").hide();
         });
 
         $("#image_his").click(function(){
@@ -429,6 +465,37 @@
           $("#record_back").hide();
           $("#images_his").show();
           $("#files_patient").hide();
+          $("#upload-files").hide();
+          $("#historical_pat").hide();
+        });
+
+        $("#upload_files").click(function(){
+          $("#history_patient").hide();
+          $("#record_back").hide();
+          $("#images_his").hide();
+          $("#files_patient").hide();
+          $("#upload-files").show();
+          $("#historical_pat").hide();
+        });
+
+        $(".historical_patient").click(function(){
+          $("#history_patient").hide();
+          $("#record_back").hide();
+          $("#images_his").hide();
+          $("#files_patient").hide();
+          $("#upload-files").hide();
+          $("#historical_pat").show();
+        });
+
+        $(document).on('click', '.dt-button-action', function () {
+          Manager.ResetForm();
+          var rowData = dTable.row($(this).parent()).data();
+          _id = rowData.id;
+          $('#id').val(rowData.id);
+          $('#span-booking-no').text(rowData.id);
+          $('#status').val(rowData.status);
+
+          $("#frmModal").modal('show');
         });
       });
 
@@ -617,7 +684,7 @@
 
             for(var i = 0; i < jsonData.length; i++){
               var html = `<tr>
-                            <td> <a href="${jsonData[i]['path']}">${jsonData[i]['name']}</a></td>
+                            <td> <a href="${jsonData[i]['path']}">${jsonData[i]['original_name']}</a></td>
                             <td>${jsonData[i]['created_at']}</td>
                             <td>
                               <button id="file-${jsonData[i]['id']}" class="btn btn-primary"><i class="fas fa-trash-alt"></i></button>
@@ -686,11 +753,39 @@
             for(var i = 0; i < jsonData.length; i++){
               var html = `<tr>
                             <td>${jsonData[i]['description']}</td>
+                            <td>${jsonData[i]['created_at']}</td>
                             <td>
                               <button class="btn btn-primary" id="record-${jsonData[i]['id']}" class=""><i class="fas fa-trash-alt"></i></button>
                             </td>
                          </tr>`;
               $("#tbl-record").append(html);
+            }
+          }
+
+          function onFailed(xhr, status, err) {
+            JsManager.EndProcessBar();
+            Message.Exception(xhr);
+          }
+        },
+        LoadAllRecordPastHis: function(id){
+          JsManager.StartProcessBar();
+          JsManager.SendJsonAsyncON('GET', "get-record-past-his/" + id, {}, onSuccess, onFailed);
+
+          function onSuccess(jsonData) {
+            JsManager.EndProcessBar();
+
+            $("#tbl-record-his").html("");
+
+            for(var i = 0; i < jsonData.length; i++){
+              var html = `<tr>
+                            <td>${jsonData[i]['title']}</td>
+                            <td>${jsonData[i]['description']}</td>
+                            <td>${jsonData[i]['created_at']}</td>
+                            <td>
+                              <button class="btn btn-primary" id="record-${jsonData[i]['id']}" class=""><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                         </tr>`;
+              $("#tbl-record-his").append(html);
             }
           }
 
@@ -709,6 +804,24 @@
             alert("Antecedente Registrado");
             $("#record_past").val("");
             Manager.LoadAllRecordPast($('#customerId').val());
+            JsManager.EndProcessBar();
+          }
+
+          function onFailed(xhr, status, err) {
+            JsManager.EndProcessBar();
+            Message.Exception(xhr);
+          }
+        },
+        SendRecordPastHis: function(data){
+          JsManager.StartProcessBar();
+
+          var serviceUrl = "save-record-past";
+          JsManager.SendJsonAsyncON('POST', serviceUrl, data, onSuccess, onFailed);
+
+          function onSuccess(jsonData) {
+            alert("Historial Registrado");
+            $("#record_past").val("");
+            Manager.LoadAllRecordPastHis($('#customerId').val());
             JsManager.EndProcessBar();
           }
 

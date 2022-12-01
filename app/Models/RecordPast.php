@@ -11,8 +11,14 @@ class RecordPast extends Model
 
     protected $table = 'record_pasts';
 
+    protected $casts = [
+        'created_at' => 'date:Y-m-d',
+    ];
+
     protected $fillable = [
         'cmn_customer_id',
+        'status',
+        'title',
         'description',
     ];
 }

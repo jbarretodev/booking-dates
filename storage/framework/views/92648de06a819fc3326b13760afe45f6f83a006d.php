@@ -42,7 +42,7 @@
                                 <div class="form-row">
                                     <div class="col-md-12">
                                         <div class="position-relative form-group">
-                                            <label for="username" class=""><?php echo e(translate('Email')); ?></label>
+                                            <label for="username" class=""><?php echo translate('Email'); ?></label>
                                             <input id="username" type="text" class="form-control <?php $__errorArgs = ['username'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -69,7 +69,7 @@ unset($__errorArgs, $__bag); ?>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="position-relative form-group">
-                                            <label for="password" class=""><?php echo e(translate('Password')); ?></label>
+                                            <label for="password" class=""><?php echo translate('Password'); ?></label>
                                             <input id="password" type="password" class="form-control <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -96,13 +96,13 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                                 <div class="position-relative form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>>
-                                    <label class="form-check-label" for="remember"><?php echo e(translate('Remember Me')); ?>
+                                    <label class="form-check-label" for="remember"><?php echo translate('Remember Me'); ?>
 
                                     </label>
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <div class="ml-auto">
-                                        <button type="submit" class="btn btn-shadow btn-primary"><?php echo e(translate('Click to Login')); ?></button>
+                                        <button type="submit" class="btn btn-shadow btn-primary"><?php echo translate('Click to Login'); ?></button>
                                     </div>
 
                                 </div>
@@ -130,7 +130,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="align-items-center text-center mt-5">
                                     <?php if(Route::has('password.request')): ?>
                                     <a class="btn-lg btn btn-link fs-16" href="<?php echo e(route('password.request')); ?>">
-                                        <?php echo e(translate('Forgot Your Password?')); ?>
+                                        <?php echo translate('Forgot Your Password?'); ?>
 
                                     </a>
                                     <?php endif; ?>
@@ -138,13 +138,10 @@ unset($__errorArgs, $__bag); ?>
 
                                 <div class="align-items-center text-center">
                                     <a class="btn-lg btn btn-link fs-16" href="<?php echo e(route('site.home')); ?>">
-                                        <?php echo e(translate('Go to Website')); ?>
+                                        <?php echo translate('Go to Website'); ?>
 
                                     </a>
                                 </div>
-
-                              
-
                             </form>
                         </div>
                     </div>

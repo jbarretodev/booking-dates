@@ -27,7 +27,7 @@
 <script>
   $(function(){
 
-    $("#upload-file").click(function(){
+    $("#uploadFiles").click(function(){
       if( document.getElementById("file_up").files.length == 0 ){
         alert("Error! Debe seleccionar un archivo");
         return false;
