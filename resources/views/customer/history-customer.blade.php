@@ -544,6 +544,13 @@
 
           $("#frmModalHiiis").modal('show');
         });
+
+        //save change status
+        JsManager.JqBootstrapValidation('#inputForm', (form, event) => {
+          event.preventDefault();
+          Manager.ChangeServiceStatus(form);
+
+        });
       });
 
       var Manager = {
