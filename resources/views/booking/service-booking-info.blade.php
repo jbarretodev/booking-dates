@@ -114,6 +114,7 @@
                             <button type="submit" class="btn btn-success btn-sm">{{translate('Save Change')}}</button>
 
                         </div>
+                    </div>
                 </form>
 
             </div>

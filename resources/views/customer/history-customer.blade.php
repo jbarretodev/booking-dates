@@ -167,6 +167,35 @@
         </div>
     </div>
 
+    <!--Modal-->
+    <div class="modal fade" id="modal-up-record" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Actualizacion de Historial o Antecedente</h5>
+                </div>
+                <form novalidate="novalidate">
+                    <div class="modal-body">
+                        <input type="hidden" id="id-record" name="id" />
+                        <div class="form-group">
+                            <label for="upDateTitle">Titulo</label>
+                            <input class="form-control" type="text" id="upDateTitle">
+                        </div>
+                        <div class="form-group">
+                            <label for="upDateDescrip">Descripcion</label>
+                            <textarea class="form-control" name="upDateDescrip" id="upDateDescrip" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="modal-footer pb-0 pr-2">
+                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">{{translate('Close')}}</button>
+                            <button type="button" id="upRecord" class="btn btn-success btn-sm">{{translate('Save Change')}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- category datatable -->
     <div class="row">
         <div class="col-md-12">
@@ -381,6 +410,10 @@
         Manager.LoadAllRecordPast($('#customerId').val());
         Manager.LoadAllRecordPastHis($('#customerId').val());
 
+        $("#upRecord").click(function(){
+          Manager.UpdateRecordPast();
+        });
+
         //save or update
         JsManager.JqBootstrapValidation('#inputFormH', (form, event) => {
           event.preventDefault();
@@ -544,6 +577,10 @@
 
           $("#frmModalHiiis").modal('show');
         });
+
+        $(document).on('click',"button[id^='up-record-']",function(){
+          Manager.GetOneRecord($(this).attr('id').split('-').pop());
+        })
 
         //save change status
         JsManager.JqBootstrapValidation('#inputForm', (form, event) => {
@@ -810,6 +847,7 @@
                             <td>${jsonData[i]['created_at']}</td>
                             <td>
                               <button class="btn btn-primary" id="record-${jsonData[i]['id']}" class=""><i class="fas fa-trash-alt"></i></button>
+                              <button class="btn btn-success" id="up-record-${jsonData[i]['id']}" class=""><i class="fas fa-pencil-alt"></i></button>
                             </td>
                          </tr>`;
               $("#tbl-record").append(html);
@@ -837,6 +875,7 @@
                             <td>${jsonData[i]['created_at']}</td>
                             <td>
                               <button class="btn btn-primary" id="record-${jsonData[i]['id']}" class=""><i class="fas fa-trash-alt"></i></button>
+                              <button class="btn btn-success" id="up-record-${jsonData[i]['id']}" class=""><i class="fas fa-pencil-alt"></i></button>
                             </td>
                          </tr>`;
               $("#tbl-record-his").append(html);
@@ -946,6 +985,53 @@
 
           function onFailed(xhr, status, err) {
             JsManager.EndProcessBar();
+            Message.Exception(xhr);
+          }
+        },
+        GetOneRecord: function(id){
+          JsManager.StartProcessBar();
+
+          var serviceUrl = "get-record-get/" + id;
+          JsManager.SendJsonWithFile('GET', serviceUrl, {}, onSuccess, onFailed);
+
+          function onSuccess(jsonData) {
+            JsManager.EndProcessBar();
+            $("#upDateTitle").val(jsonData['title']);
+            $("#upDateDescrip").val(jsonData['description']);
+            $("#id-record").val(jsonData['id']);
+
+            $("#modal-up-record").modal('show');
+          }
+
+          function onFailed(xhr, status, err) {
+            JsManager.EndProcessBar();
+            Message.Exception(xhr);
+          }
+        },
+        UpdateRecordPast: function(){
+          JsManager.StartProcessBar();
+          var id = $("#id-record").val();
+          var title = $("#upDateTitle").val();
+          var description = $("#upDateDescrip").val();
+          var serviceUrl = "get-record-past-update/" + id;
+
+          JsManager.SendJson("POST", serviceUrl, {
+            title,
+            description
+          }, onSuccess, onFailed);
+
+          function onSuccess(jsonData) {
+            JsManager.EndProcessBar();
+            Manager.LoadAllRecordPastHis($("#customerId").val());
+            $("#id-record").val("");
+            $("#upDateTitle").val("");
+            $("#upDateDescrip").val("");
+            Message.Success("update");
+          }
+
+          function onFailed(xhr, status, err) {
+            JsManager.EndProcessBar();
+            Message.Error("update");
             Message.Exception(xhr);
           }
         },

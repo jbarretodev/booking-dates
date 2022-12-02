@@ -28,4 +28,24 @@ class RecordPastController extends Controller
 
         return response()->json($record->delete());
     }
+
+    public function getOneRecordPass($id): \Illuminate\Http\JsonResponse
+    {
+        $record = RecordPast::where("id",$id)->first();
+
+        if(is_null($record)) return response()->json([],404);
+
+        return response()->json($record);
+    }
+
+    public function updateRecord(Request $request,$id): \Illuminate\Http\JsonResponse
+    {
+        $record = RecordPast::where("id",$id)->first();
+
+        if(is_null($record)) return response()->json([],404);
+
+        $record->update($request->all());
+
+        return response()->json($record->refresh())
+;    }
 }
