@@ -201,35 +201,51 @@
         <div class="col-md-12">
             <div class="main-card card">
                 <div class="card-header">
-                    <div class="d-flex align-items-center">
-                        <h4 class="card-title">
-                            Ficha Historica
-                        </h4>
+                    <div class="d-flex align-items-center navbar navbar-expand-lg">
 
-                        <div class="btn-group ml-5">
-                            <button type="button" class="btn btn-light historical_patient">Historial</button>
-                            <button type="button" class="btn btn-light editCustoH">Datos</button>
-                            <button id="history_pa" type="button" class="btn btn-light">Citas</button>
-                            <button id="record_pa" type="button" class="btn btn-light">Antecedentes</button>
-                            <div class="dropdown">
-                                <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    Archivos
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" id="files_pa" href="#">Ver Archivos</a>
-                                    <a class="dropdown-item" id="upload_files" href="#">Cargar Archivo</a>
-                                </div>
-                            </div>
+                        <h4 class="navbar-brand">Ficha Historica</h4>
 
-                            <div class="dropdown">
-                                <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    Imágenes
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" id="image_his" href="#">Galería de Imágenes</a>
-                                    <a class="dropdown-item" id="upload_files" href="#">Subir Imagenes</a>
-                                </div>
-                            </div>
+                        <button class="navbar-toggler more" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="icon-menu"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="navbar-item">
+                                    <button type="button" class="btn btn-light historical_patient">Historial</button>
+                                </li>
+                                <li class="navbar-item">
+                                    <button type="button" class="btn btn-light editCustoH">Datos</button>
+                                </li>
+                                <li class="navbar-item">
+                                    <button id="history_pa" type="button" class="btn btn-light">Citas</button>
+                                </li>
+                                <li class="navbar-item">
+                                    <button id="record_pa" type="button" class="btn btn-light">Antecedentes</button>
+                                </li>
+                                <li class="navbar-item">
+                                    <div class="dropdown">
+                                        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                            Archivos
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" id="files_pa" href="#">Ver Archivos</a>
+                                            <a class="dropdown-item" id="upload_files" href="#">Cargar Archivo</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="navbar-item">
+                                    <div class="dropdown">
+                                        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                            Imágenes
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" id="image_his" href="#">Galería de Imágenes</a>
+                                            <a class="dropdown-item" id="upload_files" href="#">Subir Imagenes</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -254,19 +270,21 @@
                             <button type="button" id="send_past_histo" class="btn btn-primary">Enviar</button>
                         </form>
 
-                        <table class="table table-bordered mt-3">
-                            <thead>
-                            <tr>
-                                <td>Titulo</td>
-                                <td>Descripción</td>
-                                <td>Fecha de Creacion</td>
-                                <td>Acciones</td>
-                            </tr>
-                            </thead>
-                            <tbody id="tbl-record-his">
+                        <div class="table-responsive">
+                            <table class="table table-bordered mt-3">
+                                <thead>
+                                <tr>
+                                    <td>Titulo</td>
+                                    <td>Descripción</td>
+                                    <td>Fecha de Creacion</td>
+                                    <td>Acciones</td>
+                                </tr>
+                                </thead>
+                                <tbody id="tbl-record-his">
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                         <hr class="mt-3">
                     </div>
 
@@ -292,18 +310,20 @@
                             <button type="button" id="send_past" class="btn btn-primary">Enviar</button>
                         </form>
 
-                        <table class="table table-bordered mt-3">
-                            <thead>
-                            <tr>
-                                <td>Descripción</td>
-                                <td>Fecha de Creacion</td>
-                                <td>Acciones</td>
-                            </tr>
-                            </thead>
-                            <tbody id="tbl-record">
+                        <div class="table-responsive">
+                            <table class="table table-bordered mt-3">
+                                <thead>
+                                <tr>
+                                    <td>Descripción</td>
+                                    <td>Fecha de Creacion</td>
+                                    <td>Acciones</td>
+                                </tr>
+                                </thead>
+                                <tbody id="tbl-record">
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                         <hr class="mt-3">
                     </div>
 
@@ -311,18 +331,20 @@
                         <h4 class="card-title">
                             Listado de Archivos
                         </h4>
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <td>Nombre del Archivo</td>
-                                <td>Fecha De Subida</td>
-                                <td>Acciones</td>
-                            </tr>
-                            </thead>
-                            <tbody id="tbody_files">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <td>Nombre del Archivo</td>
+                                    <td>Fecha De Subida</td>
+                                    <td>Acciones</td>
+                                </tr>
+                                </thead>
+                                <tbody id="tbody_files">
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                         <hr class="mt-3">
                     </div>
 
@@ -366,7 +388,6 @@
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
