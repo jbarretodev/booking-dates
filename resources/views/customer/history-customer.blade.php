@@ -241,7 +241,7 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" id="image_his" href="#">Galería de Imágenes</a>
-                                            <a class="dropdown-item" id="upload_files" href="#">Subir Imagenes</a>
+                                            <a class="dropdown-item" id="upload_images" href="#">Subir Imagenes</a>
                                         </div>
                                     </div>
                                 </li>
@@ -570,7 +570,7 @@
           $("#historical_pat").hide();
         });
 
-        $("#upload_files").click(function(){
+        $("#upload_files, #upload_images").click(function(){
           $("#history_patient").hide();
           $("#record_back").hide();
           $("#images_his").hide();
@@ -775,11 +775,13 @@
           JsManager.SendJsonWithFile('POST', serviceUrl, data, onSuccess, onFailed);
 
           function onSuccess(jsonData) {
+            alert("Archivo subido exitosamente");
             Manager.LoadAllFiles($('#customerId').val());
             JsManager.EndProcessBar();
           }
 
           function onFailed(xhr, status, err) {
+            alert("Error Subiendo archivo");
             JsManager.EndProcessBar();
             Message.Exception(xhr);
           }
