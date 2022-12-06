@@ -24,7 +24,7 @@ class FileSaveRequest extends FormRequest
     public function rules()
     {
         return [
-            'file' => 'required|mimes:jpg,jpeg,png,pdf,doc,docx|max:2000',
+            'file' => 'required|mimes:jpg,jpeg,png,svg,gift,webp,pdf,doc,docx',
         ];
     }
 }

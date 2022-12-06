@@ -88,6 +88,17 @@
       0 => 'RachidLaasri\\LaravelInstaller\\Providers\\LaravelInstallerServiceProvider',
     ),
   ),
+  'spatie/laravel-image-optimizer' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\LaravelImageOptimizer\\ImageOptimizerServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'ImageOptimizer' => 'Spatie\\LaravelImageOptimizer\\Facades\\ImageOptimizer',
+    ),
+  ),
   'stevebauman/location' => 
   array (
     'providers' => 

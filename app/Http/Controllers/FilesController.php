@@ -6,6 +6,7 @@ use App\Http\Requests\FileSaveRequest;
 use App\Models\Files;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Spatie\ImageOptimizer\OptimizerChainFactory;
 
 class FilesController extends Controller
 {
@@ -20,6 +21,11 @@ class FilesController extends Controller
         $path = asset('uploadsRecordPast/' . $name .'.'. $ext);
         $file = $request->file('file');
         $file->move(public_path('uploadsRecordPast'),$name .'.'. $ext);
+
+        if( in_array($ext,["svg", "gift", "webp", "jpeg", "png"]) ){
+            $optimizerChain = OptimizerChainFactory::create();
+            $optimizerChain->optimize(public_path('uploadsRecordPast/') . $name .'.'. $ext);
+        }
 
         $newFile = Files::create([
             'name' => $name.'.'.$ext,
@@ -47,7 +53,8 @@ class FilesController extends Controller
         );
     }
 
-    public function getOnlyImages($id){
+    public function getOnlyImages($id): \Illuminate\Http\JsonResponse
+    {
         $files = Files::where('cmn_customer_id',$id)->get();
         $validFiles = [];
 
