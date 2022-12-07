@@ -35,6 +35,7 @@
     <link href="<?php echo e(dsAsset('js/lib/assets/css/checkbox-slider.css')); ?>" rel="stylesheet" />
     <link href="<?php echo e(dsAsset('js/lib/xd-dpicker/jquery.datetimepicker.css')); ?>" rel="stylesheet" />
     <link href="<?php echo e(dsAsset('css/site.css?v=1')); ?>" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/lightgallery/1.3.9/css/lightgallery.min.css" rel="stylesheet">
     <!-- tel input css -->
     <link href="<?php echo e(dsAsset('js/lib/tel-input/css/intlTelInput.css')); ?>" rel="stylesheet" />
 
@@ -44,6 +45,122 @@
     <!--Jquery JS-->
     <script src="<?php echo e(dsAsset('js/lib/assets/js/core/jquery-3.6.0.min.js')); ?>"></script>
     <link href="https://fonts.googleapis.com/css?family=Exo:500,600,700|Roboto&display=swap" rel="stylesheet" />
+    <style>
+        .demo-gallery > ul {
+            margin-bottom: 0;
+        }
+        .demo-gallery > ul > li {
+            float: left;
+            margin-bottom: 15px;
+            margin-right: 20px;
+            width: 200px;
+        }
+        .demo-gallery > ul > li a {
+            border: 3px solid #FFF;
+            border-radius: 3px;
+            display: block;
+            overflow: hidden;
+            position: relative;
+            float: left;
+        }
+        .demo-gallery > ul > li a > img {
+            -webkit-transition: -webkit-transform 0.15s ease 0s;
+            -moz-transition: -moz-transform 0.15s ease 0s;
+            -o-transition: -o-transform 0.15s ease 0s;
+            transition: transform 0.15s ease 0s;
+            -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+            height: 100%;
+            width: 100%;
+        }
+        .demo-gallery > ul > li a:hover > img {
+            -webkit-transform: scale3d(1.1, 1.1, 1.1);
+            transform: scale3d(1.1, 1.1, 1.1);
+        }
+        .demo-gallery > ul > li a:hover .demo-gallery-poster > img {
+            opacity: 1;
+        }
+        .demo-gallery > ul > li a .demo-gallery-poster {
+            background-color: rgba(0, 0, 0, 0.1);
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            -webkit-transition: background-color 0.15s ease 0s;
+            -o-transition: background-color 0.15s ease 0s;
+            transition: background-color 0.15s ease 0s;
+        }
+        .demo-gallery > ul > li a .demo-gallery-poster > img {
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            -webkit-transition: opacity 0.3s ease 0s;
+            -o-transition: opacity 0.3s ease 0s;
+            transition: opacity 0.3s ease 0s;
+        }
+        .demo-gallery > ul > li a:hover .demo-gallery-poster {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .demo-gallery .justified-gallery > a > img {
+            -webkit-transition: -webkit-transform 0.15s ease 0s;
+            -moz-transition: -moz-transform 0.15s ease 0s;
+            -o-transition: -o-transform 0.15s ease 0s;
+            transition: transform 0.15s ease 0s;
+            -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+            height: 100%;
+            width: 100%;
+        }
+        .demo-gallery .justified-gallery > a:hover > img {
+            -webkit-transform: scale3d(1.1, 1.1, 1.1);
+            transform: scale3d(1.1, 1.1, 1.1);
+        }
+        .demo-gallery .justified-gallery > a:hover .demo-gallery-poster > img {
+            opacity: 1;
+        }
+        .demo-gallery .justified-gallery > a .demo-gallery-poster {
+            background-color: rgba(0, 0, 0, 0.1);
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            -webkit-transition: background-color 0.15s ease 0s;
+            -o-transition: background-color 0.15s ease 0s;
+            transition: background-color 0.15s ease 0s;
+        }
+        .demo-gallery .justified-gallery > a .demo-gallery-poster > img {
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            -webkit-transition: opacity 0.3s ease 0s;
+            -o-transition: opacity 0.3s ease 0s;
+            transition: opacity 0.3s ease 0s;
+        }
+        .demo-gallery .justified-gallery > a:hover .demo-gallery-poster {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .demo-gallery .video .demo-gallery-poster img {
+            height: 48px;
+            margin-left: -24px;
+            margin-top: -24px;
+            opacity: 0.8;
+            width: 48px;
+        }
+        .demo-gallery.dark > ul > li a {
+            border: 3px solid #04070a;
+        }
+        .demo-gallery {
+            padding-bottom: 80px;
+        }
+    </style>
 </head>
 
 <body>
@@ -287,7 +404,7 @@
                         <li class="nav-item">
                             <a data-toggle="collapse" href="#base<?php echo e($item->id); ?>" class="collapsed" aria-expanded="false">
                                 <i class="<?php echo e($item->icon); ?>"></i>
-                                <p><?php echo e(translate($item->display_name)); ?></p>
+                                <p><?php echo translate($item->display_name); ?></p>
                                 <span class="caret"></span>
                             </a>
                             <div class="collapse" id="base<?php echo e($item->id); ?>">
@@ -295,7 +412,7 @@
                                     <?php $__currentLoopData = $menuList->where('level', 2)->where('resource_id', $item->id); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <li>
                                             <a href="<?php echo e(route($item1->method)); ?>">
-                                                <span class="sub-item"> <?php echo e(translate($item1->display_name)); ?></span>
+                                                <span class="sub-item"> <?php echo translate($item1->display_name); ?></span>
                                             </a>
                                         </li>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

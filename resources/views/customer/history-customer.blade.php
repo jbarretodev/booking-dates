@@ -349,27 +349,12 @@
                     </div>
 
                     <div id="images_his">
-                        <h4>Carrusel de Imagenes</h4>
-                        <div class="row">
-                            <div class="col-lg-2"></div>
-                            <div class="col-lg-7">
-                                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                                    <ol id="caru_indi" class="carousel-indicators">
+                        <h4>Galeria de Imagenes</h4>
 
-                                    </ol>
-                                    <div id="caru_item" class="carousel-inner">
-                                    </div>
-                                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-3"></div>
+                        <div class="demo-gallery">
+                            <ul id="lightgallery" class="list-unstyled row">
+
+                            </ul>
                         </div>
 
                         <hr class="mt-3">
@@ -392,7 +377,7 @@
             </div>
         </div>
     </div>
-
+    <script src="{{ dsAsset('js/lib/lightGallery.js') }}"></script>
     <script type="text/javascript">
       var dTable = null;
       var _id = null;
@@ -433,6 +418,10 @@
 
         $("#upRecord").click(function(){
           Manager.UpdateRecordPast();
+        });
+
+        $(document).ready(function(){
+          $('#lightgallery').lightGallery();
         });
 
         //save or update
@@ -822,31 +811,14 @@
             JsManager.EndProcessBar();
             console.log(jsonData);
 
-            if(jsonData.length < 1) $("#carouselExampleCaptions").hide();
-
-            $("#caru_indi").html("");
-            $("#caru_item").html("");
+            $("#lightgallery").html("");
 
             for(var i = 0; i < jsonData.length; i++){
-              if(i == 0){
-                $("#caru_indi").append(`<li data-target="#carouselExampleCaptions" data-slide-to="${i}" class="active"></li>`);
-
-                $("#caru_item").append(`<div class="carousel-item active">
-                                    <img src="${jsonData[i]['path']}" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>Subido - ${jsonData[i]['created_at']}</h5>
-                                    </div>
-                                </div>`);
-              }else{
-                $("#caru_indi").append(`<li data-target="#carouselExampleCaptions" data-slide-to="${i}"></li>`);
-
-                $("#caru_item").append(`<div class="carousel-item">
-                                    <img src="${jsonData[i]['path']}" class="d-block w-100" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>Subido - ${jsonData[i]['created_at']}</h5>
-                                    </div>
-                                </div>`);
-              }
+              $("#lightgallery").append(`<li class="col-xs-6 col-sm-4 col-md-2 col-lg-2" data-responsive="${jsonData[i]['path']}" data-src="${jsonData[i]['path']}" data-sub-html="<h4>Foto Subida</h4><p>${jsonData[i]['created_at']}</p>">
+                                    <a href="">
+                                        <img class="img-responsive" src="${jsonData[i]['path']}">
+                                    </a>
+                                </li>`);
             }
           }
 

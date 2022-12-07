@@ -22,9 +22,10 @@ class FilesController extends Controller
         $file = $request->file('file');
         $file->move(public_path('uploadsRecordPast'),$name .'.'. $ext);
 
-        if( in_array($ext,["svg", "gift", "webp", "jpeg", "png"]) ){
+        if( in_array($ext,["svg", "gift", "webp", "jpg", "jpeg", "png"]) ){
             $optimizerChain = OptimizerChainFactory::create();
             $optimizerChain->optimize(public_path('uploadsRecordPast/') . $name .'.'. $ext);
+            info("entro - compress images");
         }
 
         $newFile = Files::create([
@@ -46,7 +47,9 @@ class FilesController extends Controller
     {
         $file = Files::where('id',$id)->first();
 
-        unlink(public_path('uploadsRecordPast/') . $file->name);
+        if(file_exists(public_path('uploadsRecordPast/') . $file->name)){
+            unlink(public_path('uploadsRecordPast/') . $file->name);
+        }
 
         return response()->json(
             $file->delete()
@@ -66,6 +69,5 @@ class FilesController extends Controller
                 $validFiles[] = $files[$i];
         };
         return response()->json($validFiles);
-        //dd($rs->toArray());
     }
 }
