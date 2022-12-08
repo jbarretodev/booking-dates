@@ -420,10 +420,6 @@
           Manager.UpdateRecordPast();
         });
 
-        $(document).ready(function(){
-          $('#lightgallery').lightGallery();
-        });
-
         //save or update
         JsManager.JqBootstrapValidation('#inputFormH', (form, event) => {
           event.preventDefault();
@@ -497,19 +493,6 @@
         //generate datatabe serial no
         dTableManager.dTableSerialNumber(dTable);
 
-        $("#upload-file").click(function(){
-          if( document.getElementById("file_up").files.length == 0 ){
-            alert("Error! Debe seleccionar un archivo");
-            return false;
-          }
-
-          var formData = new FormData();
-          formData.append('file', $('#file_up')[0].files[0]);
-          formData.append('customer_id',$("#customerId").val());
-
-          Manager.UploadFile(formData);
-        });
-
         $("#send_past").click(function(){
           if( $.trim($("#record_past").val()) === "" ){
             alert("Error! El campo de antecedente esta vacio!");
@@ -551,7 +534,6 @@
         });
 
         $("#image_his").click(function(){
-          Manager.LoadAllFilesImages($('#customerId').val())
           $("#history_patient").hide();
           $("#record_back").hide();
           $("#images_his").show();
@@ -767,6 +749,7 @@
           function onSuccess(jsonData) {
             alert("Archivo subido exitosamente");
             Manager.LoadAllFiles($('#customerId').val());
+            Manager.LoadAllFilesImages($('#customerId').val());
             JsManager.EndProcessBar();
           }
 
@@ -812,8 +795,6 @@
             JsManager.EndProcessBar();
             console.log(jsonData);
 
-            $("#lightgallery").html("");
-
             for(var i = 0; i < jsonData.length; i++){
               $("#lightgallery").append(`<li class="col-xs-6 col-sm-4 col-md-2 col-lg-2" data-responsive="${jsonData[i]['path']}" data-src="${jsonData[i]['path']}" data-sub-html="<h4>Foto Subida</h4><p>${jsonData[i]['created_at']}</p>">
                                     <a href="">
@@ -821,6 +802,8 @@
                                     </a>
                                 </li>`);
             }
+            $('#lightgallery').lightGallery().data('lightGallery').destroy(true);
+            $('#lightgallery').lightGallery();
           }
 
           function onFailed(xhr, status, err) {
