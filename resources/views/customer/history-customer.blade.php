@@ -770,7 +770,7 @@
           }
 
           function onFailed(xhr, status, err) {
-            alert("Error Subiendo archivo, el archivo no puede pasar de 2mb y los formatos permitidos jpg,jpeg,png,svg,gift,webp,pdf,pdf,doc,docx");
+            alert("Error Subiendo archivo, el archivo debe ser de formatos permitidos jpg,jpeg,png,svg,gift,webp,pdf,doc,docx");
             JsManager.EndProcessBar();
             Message.Exception(xhr);
           }
