@@ -551,6 +551,7 @@
         });
 
         $("#image_his").click(function(){
+          Manager.LoadAllFilesImages($('#customerId').val())
           $("#history_patient").hide();
           $("#record_back").hide();
           $("#images_his").show();
